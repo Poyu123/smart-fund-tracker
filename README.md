@@ -40,25 +40,24 @@ English: A high-performance personal fund tracker focused on providing real-time
 ## 🚀 Quick Start / 快速开始
 
 ### Prerequisites / 前置要求
-- Python 3.8+
-- pip (Python package manager)
+- [Anaconda](https://www.anaconda.com/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed.
+- 您的电脑上已安装 Anaconda 或 Miniconda。
 
-### Installation / 安装部署
+### Installation & Running / 安装与运行
 
-1. **Clone the repository / 克隆仓库:**
-   ```bash
-   git clone [https://github.com/yourusername/FundVu.git](https://github.com/yourusername/FundVu.git)
-   cd FundVu
-Install dependencies / 安装依赖:
-
-Bash
-pip install fastapi uvicorn pydantic akshare pandas openpyxl
-Run the server / 启动服务:
-
-Bash
+**1. Create the environment / 创建运行环境**
+Navigate to the extracted project folder in your terminal and create the environment using the provided `environment.yml` file:
+在终端中进入该项目文件夹，并使用提供的 `environment.yml` 文件一键创建运行环境：
+conda env create -f environment.yml
+**2. Activate the environment / 激活环境**
+conda activate fundvu
+(Note: If your environment name in environment.yml is different, replace fundvu with your actual environment name. / 注：如果您的 environment.yml 中定义的环境名称不是 fundvu，请替换为您实际定义的名字。)
+**3. Run the server / 启动服务**
+Start the backend service using Uvicorn:
+使用 Uvicorn 启动本地服务器：
 uvicorn server:app --host 0.0.0.0 --port 8000 --reload
-Access the application / 访问应用:
-Open your browser and navigate to http://localhost:8000
+**4. Access the application / 访问应用**
+Open your browser and navigate to / 打开浏览器并访问: http://localhost:8000
 
 🏗️ Architecture Highlight / 架构亮点
 The backend utilizes a Daemon Thread Pre-warming System. Every day at 5:00 AM (Beijing Time), a background worker clears expired caches and pre-fetches the latest data for all user-saved funds, ensuring a "zero-latency" experience when users wake up and check their portfolios.
