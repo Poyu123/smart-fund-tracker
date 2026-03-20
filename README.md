@@ -1,11 +1,12 @@
-# smart-fund-tracker
-English: A high-performance personal fund tracker focused on providing real-time net value estimations. It features deep stock penetration, smart reverse-calculation, and robust multi-level caching for a seamless experience. 中文: 一款专注于提供基金实时净值估算的高性能追踪看板。支持底层重仓股穿透、智能净值反向推算，并内置防御级三级缓存架构。
-
-# FundVu 
+# FundVu (smart-fund-tracker)
 
 <p align="center">
   <strong>A high-performance, cross-device personal fund monitoring workspace.</strong><br>
   <strong>一个高性能、跨设备的个人基金实时监控工作站。</strong>
+</p>
+
+<p align="center">
+  🚀 <strong>Live Demo / 在线体验: <a href="[http://132.232.207.65:8000/](http://132.232.207.65:8000/)">[http://132.232.207.65:8000/](http://132.232.207.65:8000/)</a></strong> 🚀
 </p>
 
 ---
