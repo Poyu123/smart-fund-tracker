@@ -1,0 +1,1991 @@
+nohup: ignoring input
+/root/miniconda3/envs/fundtool/lib/python3.11/site-packages/py_mini_racer/py_mini_racer.py:15: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+INFO:     Started server process [3183835]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+>>> [系统初始化] 正在拉取全量基金基础信息(L0底座)...
+>>> [行情中心] 冷启动成功装载 A 市场本地数据: 2026_03_20_A股.xlsx
+>>> [行情中心] 冷启动成功装载 HK 市场本地数据: 2026_03_20_港股.xlsx
+INFO:     171.219.190.254:63037 - "GET / HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63037 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63039 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63037 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63037 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63042 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63037 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /api/fund/check_auth?sync_code=TT00%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /api/fund/sync_pool?sync_code=TT00%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+>>> [系统初始化] L0底座加载完成，共 26253 只基金。
+>>> [内存LRU未命中] 正在处理 016453 的静态数据...
+--- [KV持久化缓存命中] 成功读取 016453 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 016453 短效图表数据。
+INFO:     171.219.190.254:63038 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [行情中心] 冷启动成功装载 US 市场本地数据: 2026_03_20_美股.xlsx
+>>> [缓存命中] 数据年龄 1秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63038 - "GET /api/fund/query?code=016453&is_pro=false HTTP/1.1" 200 OK
+  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A  1%|          | 1/99 [00:00<00:15,  6.14it/s]
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:14,  4.80it/s][A  2%|▏         | 2/99 [00:00<00:20,  4.81it/s]
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:13,  5.13it/s][A  3%|▎         | 3/99 [00:00<00:20,  4.70it/s]>>> [缓存命中] 数据年龄 4秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63038 - "GET /api/fund/query?code=016453&is_pro=false HTTP/1.1" 200 OK
+
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:12,  5.08it/s][A  4%|▍         | 4/99 [00:00<00:19,  4.78it/s]
+Please wait for a moment:   6%|▌         | 4/69 [00:00<00:12,  5.25it/s][A  5%|▌         | 5/99 [00:00<00:18,  5.22it/s]  6%|▌         | 6/99 [00:01<00:16,  5.63it/s]  7%|▋         | 7/99 [00:01<00:15,  5.97it/s]
+Please wait for a moment:   7%|▋         | 5/69 [00:01<00:21,  3.01it/s][A  8%|▊         | 8/99 [00:01<00:19,  4.58it/s]
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:17,  3.56it/s][A
+Please wait for a moment:  10%|█         | 7/69 [00:01<00:15,  4.07it/s][A  9%|▉         | 9/99 [00:01<00:18,  4.75it/s]
+Please wait for a moment:  12%|█▏        | 8/69 [00:01<00:13,  4.43it/s][A 10%|█         | 10/99 [00:02<00:21,  4.05it/s]
+Please wait for a moment:  13%|█▎        | 9/69 [00:02<00:12,  4.73it/s][A 11%|█         | 11/99 [00:02<00:20,  4.29it/s]
+Please wait for a moment:  14%|█▍        | 10/69 [00:02<00:11,  4.94it/s][A
+Please wait for a moment:  16%|█▌        | 11/69 [00:02<00:11,  5.19it/s][A 12%|█▏        | 12/99 [00:02<00:19,  4.47it/s]
+Please wait for a moment:  17%|█▋        | 12/69 [00:02<00:10,  5.31it/s][A 13%|█▎        | 13/99 [00:02<00:17,  4.87it/s]
+Please wait for a moment:  19%|█▉        | 13/69 [00:02<00:10,  5.29it/s][A 14%|█▍        | 14/99 [00:02<00:17,  4.98it/s]>>> [缓存命中] 数据年龄 6秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63038 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+ 15%|█▌        | 15/99 [00:03<00:16,  5.21it/s]
+Please wait for a moment:  20%|██        | 14/69 [00:02<00:10,  5.20it/s][A
+Please wait for a moment:  22%|██▏       | 15/69 [00:03<00:10,  5.40it/s][A 16%|█▌        | 16/99 [00:03<00:16,  5.16it/s]
+Please wait for a moment:  23%|██▎       | 16/69 [00:03<00:09,  5.46it/s][A 17%|█▋        | 17/99 [00:03<00:19,  4.17it/s]
+Please wait for a moment:  25%|██▍       | 17/69 [00:03<00:10,  4.89it/s][A 18%|█▊        | 18/99 [00:03<00:18,  4.33it/s]
+Please wait for a moment:  26%|██▌       | 18/69 [00:03<00:10,  4.89it/s][A 19%|█▉        | 19/99 [00:04<00:19,  4.21it/s]
+Please wait for a moment:  28%|██▊       | 19/69 [00:03<00:09,  5.08it/s][A 20%|██        | 20/99 [00:04<00:17,  4.57it/s]
+Please wait for a moment:  29%|██▉       | 20/69 [00:04<00:09,  5.25it/s][A
+Please wait for a moment:  30%|███       | 21/69 [00:04<00:08,  5.38it/s][A 21%|██        | 21/99 [00:04<00:16,  4.82it/s] 22%|██▏       | 22/99 [00:04<00:14,  5.21it/s] 23%|██▎       | 23/99 [00:04<00:13,  5.66it/s] 24%|██▍       | 24/99 [00:04<00:12,  5.96it/s] 25%|██▌       | 25/99 [00:05<00:12,  5.92it/s]>>> [缓存命中] 数据年龄 9秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63038 - "GET /api/fund/query?code=016453&is_pro=false HTTP/1.1" 200 OK
+ 26%|██▋       | 26/99 [00:05<00:12,  5.90it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:05<00:19,  2.43it/s][A 27%|██▋       | 27/99 [00:05<00:12,  5.69it/s]
+Please wait for a moment:  33%|███▎      | 23/69 [00:05<00:15,  2.95it/s][A 28%|██▊       | 28/99 [00:05<00:12,  5.49it/s]
+Please wait for a moment:  35%|███▍      | 24/69 [00:05<00:13,  3.37it/s][A
+Please wait for a moment:  36%|███▌      | 25/69 [00:05<00:11,  3.88it/s][A 29%|██▉       | 29/99 [00:05<00:15,  4.58it/s] 30%|███       | 30/99 [00:06<00:14,  4.79it/s]
+Please wait for a moment:  38%|███▊      | 26/69 [00:06<00:10,  4.19it/s][A 31%|███▏      | 31/99 [00:06<00:13,  4.96it/s]
+Please wait for a moment:  39%|███▉      | 27/69 [00:06<00:09,  4.49it/s][A
+Please wait for a moment:  41%|████      | 28/69 [00:06<00:08,  4.82it/s][A 32%|███▏      | 32/99 [00:06<00:13,  5.14it/s]
+Please wait for a moment:  42%|████▏     | 29/69 [00:06<00:07,  5.02it/s][A 33%|███▎      | 33/99 [00:06<00:12,  5.26it/s] 34%|███▍      | 34/99 [00:06<00:12,  5.39it/s]
+Please wait for a moment:  43%|████▎     | 30/69 [00:06<00:07,  5.15it/s][A 35%|███▌      | 35/99 [00:06<00:11,  5.71it/s] 36%|███▋      | 36/99 [00:07<00:10,  5.95it/s] 37%|███▋      | 37/99 [00:07<00:12,  5.16it/s]
+Please wait for a moment:  45%|████▍     | 31/69 [00:07<00:11,  3.30it/s][A 38%|███▊      | 38/99 [00:07<00:11,  5.46it/s] 39%|███▉      | 39/99 [00:07<00:10,  5.83it/s] 40%|████      | 40/99 [00:07<00:10,  5.77it/s] 41%|████▏     | 41/99 [00:07<00:09,  6.16it/s] 42%|████▏     | 42/99 [00:08<00:09,  5.91it/s]
+Please wait for a moment:  46%|████▋     | 32/69 [00:08<00:18,  2.02it/s][A 43%|████▎     | 43/99 [00:08<00:09,  5.76it/s]
+Please wait for a moment:  48%|████▊     | 33/69 [00:08<00:14,  2.49it/s][A 44%|████▍     | 44/99 [00:08<00:09,  5.51it/s] 45%|████▌     | 45/99 [00:08<00:09,  5.90it/s] 46%|████▋     | 46/99 [00:08<00:08,  6.21it/s]                                               
+Please wait for a moment:  49%|████▉     | 34/69 [00:09<00:21,  1.66it/s][AINFO:     171.219.190.254:63038 - "POST /api/fund/delete_account HTTP/1.1" 200 OK
+
+Please wait for a moment:  51%|█████     | 35/69 [00:09<00:16,  2.04it/s][AINFO:     171.219.190.254:63038 - "GET / HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+
+Please wait for a moment:  52%|█████▏    | 36/69 [00:10<00:16,  1.99it/s][AINFO:     171.219.190.254:63043 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+
+Please wait for a moment:  54%|█████▎    | 37/69 [00:11<00:19,  1.65it/s][AINFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+
+Please wait for a moment:  55%|█████▌    | 38/69 [00:11<00:14,  2.11it/s][A
+Please wait for a moment:  57%|█████▋    | 39/69 [00:11<00:11,  2.60it/s][A
+Please wait for a moment:  58%|█████▊    | 40/69 [00:12<00:18,  1.61it/s][A
+Please wait for a moment:  59%|█████▉    | 41/69 [00:13<00:16,  1.71it/s][AINFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 18秒 < 30秒，直接返回。
+>>> [内存LRU未命中] 正在处理 012414 的静态数据...
+--- [KV持久化缓存命中] 成功读取 012414 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 012414 短效图表数据。
+>>> [内存LRU未命中] 正在处理 025526 的静态数据...
+--- [KV持久化缓存命中] 成功读取 025526 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 025526 短效图表数据。
+>>> [内存LRU未命中] 正在处理 025942 的静态数据...
+--- [KV持久化缓存命中] 成功读取 025942 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 025942 短效图表数据。
+>>> [内存LRU未命中] 正在处理 020741 的静态数据...
+--- [KV持久化缓存命中] 成功读取 020741 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 020741 短效图表数据。
+>>> [内存LRU未命中] 正在处理 007467 的静态数据...
+--- [KV持久化缓存命中] 成功读取 007467 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 007467 短效图表数据。
+>>> [内存LRU未命中] 正在处理 012547 的静态数据...
+--- [KV持久化缓存命中] 成功读取 012547 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 012547 短效图表数据。
+>>> [内存LRU未命中] 正在处理 019026 的静态数据...
+--- [KV持久化缓存命中] 成功读取 019026 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 019026 短效图表数据。
+>>> [内存LRU未命中] 正在处理 008163 的静态数据...
+--- [KV持久化缓存命中] 成功读取 008163 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 008163 短效图表数据。
+>>> [内存LRU未命中] 正在处理 015394 的静态数据...
+--- [KV持久化缓存命中] 成功读取 015394 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 015394 短效图表数据。
+>>> [内存LRU未命中] 正在处理 018463 的静态数据...
+--- [KV持久化缓存命中] 成功读取 018463 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 018463 短效图表数据。
+>>> [内存LRU未命中] 正在处理 014064 的静态数据...
+--- [KV持久化缓存命中] 成功读取 014064 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 014064 短效图表数据。
+>>> [内存LRU未命中] 正在处理 015839 的静态数据...
+--- [KV持久化缓存命中] 成功读取 015839 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 015839 短效图表数据。
+INFO:     171.219.190.254:63043 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 18秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63043 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+
+Please wait for a moment:  61%|██████    | 42/69 [00:15<00:32,  1.19s/it][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:15<00:22,  1.13it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:16<00:16,  1.49it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:16<00:12,  1.92it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:16<00:09,  2.35it/s][A
+Please wait for a moment:  68%|██████▊   | 47/69 [00:16<00:07,  2.88it/s][A
+Please wait for a moment:  70%|██████▉   | 48/69 [00:16<00:06,  3.36it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:16<00:05,  3.79it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:17<00:04,  4.19it/s][AINFO:     171.219.190.254:63043 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+
+Please wait for a moment:  74%|███████▍  | 51/69 [00:17<00:03,  4.51it/s][A>>> [缓存命中] 数据年龄 21秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63038 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+
+Please wait for a moment:  75%|███████▌  | 52/69 [00:17<00:03,  4.71it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:17<00:03,  4.83it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:17<00:02,  5.10it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:18<00:02,  5.18it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:18<00:02,  5.31it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:18<00:02,  5.38it/s][AINFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+
+Please wait for a moment:  84%|████████▍ | 58/69 [00:18<00:02,  5.44it/s][AINFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+
+Please wait for a moment:  86%|████████▌ | 59/69 [00:18<00:01,  5.51it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:19<00:02,  3.33it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:19<00:02,  3.83it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:19<00:01,  4.24it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:19<00:01,  4.63it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:20<00:01,  4.88it/s][A>>> [缓存命中] 数据年龄 24秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63038 - "GET /api/fund/query?code=008163&is_pro=false HTTP/1.1" 200 OK
+
+Please wait for a moment:  94%|█████████▍| 65/69 [00:20<00:00,  5.05it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:20<00:00,  5.23it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:20<00:00,  5.22it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:20<00:00,  5.40it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:20<00:00,  5.78it/s][A
+                                                                         [AINFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 26秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63038 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63043 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63038 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63044 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63038 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63055 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63054 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63056 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63057 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63055 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63054 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63057 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63056 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 24秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63055 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63054 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63054 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63055 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63056 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63057 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 27秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63054 - "GET /api/fund/query?code=018463&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 28秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63054 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63055 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63054 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63057 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63056 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 30秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63054 - "GET /api/fund/query?code=012414&is_pro=true HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63054 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63058 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63059 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63060 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 37秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63058 - "GET /api/fund/query?code=025942&is_pro=true HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63058 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63061 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63062 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63063 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63061 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63058 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63062 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63064 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63061 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63058 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63064 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63062 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63070 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 27秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63075 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63084 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 5秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63086 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 8秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63086 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 10秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63086 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 12秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63086 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 16秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63086 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 20秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63086 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63098 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+>>> [缓存命中] 数据年龄 28秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63103 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63150 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63150 - "GET / HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63152 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63150 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63152 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63150 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63152 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63157 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63159 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63157 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63157 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 6秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63150 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 14秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63160 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63161 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 14秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63160 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 17秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63160 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63189 - "GET / HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63190 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63189 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62990 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63190 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63189 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63189 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63190 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63000 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63190 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63000 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63190 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62991 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63190 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63190 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63000 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 0秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63190 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 3秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63190 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 9秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63021 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 12秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63021 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 14秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63021 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63040 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 13秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63042 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 18秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63042 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 27秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63044 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63049 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63048 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63050 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63051 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63063 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63065 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63062 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63064 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63066 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63067 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63068 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63069 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63062 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63072 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63071 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63074 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63073 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 7秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63072 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63071 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 13秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63076 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63077 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63076 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63077 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63078 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63079 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63076 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63077 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63079 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63078 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63076 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63077 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63079 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63078 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63077 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63076 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63079 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63078 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63076 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 28秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63077 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 28秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63080 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63077 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63080 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63079 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 30秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63077 - "GET /api/fund/query?code=008163&is_pro=false HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63078 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 33秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63077 - "GET /api/fund/query?code=008163&is_pro=false HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63077 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63081 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63078 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63082 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63081 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63077 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63077 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63081 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63083 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63084 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63088 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63088 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 23秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63088 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63089 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63090 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63086 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63085 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63092 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63093 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63086 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63085 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63093 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63092 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63087 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63094 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63095 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63096 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63087 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63094 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63096 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63095 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 43秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63094 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:11,  5.95it/s][A  1%|          | 1/99 [00:00<00:27,  3.60it/s]
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:11,  5.73it/s][A  2%|▏         | 2/99 [00:00<00:21,  4.47it/s]
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:11,  5.74it/s][A  3%|▎         | 3/99 [00:00<00:19,  5.00it/s]
+Please wait for a moment:   6%|▌         | 4/69 [00:00<00:11,  5.55it/s][A
+Please wait for a moment:   7%|▋         | 5/69 [00:00<00:11,  5.56it/s][A  4%|▍         | 4/99 [00:00<00:23,  4.03it/s]
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:11,  5.54it/s][A  5%|▌         | 5/99 [00:01<00:21,  4.47it/s]
+Please wait for a moment:  10%|█         | 7/69 [00:01<00:11,  5.40it/s][A  6%|▌         | 6/99 [00:01<00:19,  4.67it/s]
+Please wait for a moment:  12%|█▏        | 8/69 [00:01<00:11,  5.45it/s][A  7%|▋         | 7/99 [00:01<00:18,  4.94it/s]  8%|▊         | 8/99 [00:01<00:21,  4.33it/s]  9%|▉         | 9/99 [00:02<00:23,  3.77it/s] 10%|█         | 10/99 [00:02<00:20,  4.40it/s] 11%|█         | 11/99 [00:02<00:17,  4.93it/s] 12%|█▏        | 12/99 [00:02<00:19,  4.41it/s] 13%|█▎        | 13/99 [00:02<00:17,  4.87it/s] 14%|█▍        | 14/99 [00:03<00:15,  5.37it/s] 15%|█▌        | 15/99 [00:03<00:17,  4.71it/s] 16%|█▌        | 16/99 [00:03<00:15,  5.24it/s] 17%|█▋        | 17/99 [00:03<00:17,  4.56it/s] 18%|█▊        | 18/99 [00:03<00:16,  4.99it/s] 19%|█▉        | 19/99 [00:04<00:19,  4.17it/s] 20%|██        | 20/99 [00:04<00:16,  4.74it/s] 21%|██        | 21/99 [00:04<00:15,  5.16it/s] 22%|██▏       | 22/99 [00:04<00:14,  5.48it/s] 23%|██▎       | 23/99 [00:04<00:13,  5.67it/s] 24%|██▍       | 24/99 [00:05<00:15,  4.81it/s] 25%|██▌       | 25/99 [00:05<00:14,  5.17it/s] 26%|██▋       | 26/99 [00:05<00:13,  5.44it/s] 27%|██▋       | 27/99 [00:05<00:15,  4.74it/s] 28%|██▊       | 28/99 [00:05<00:16,  4.27it/s] 29%|██▉       | 29/99 [00:06<00:14,  4.81it/s] 30%|███       | 30/99 [00:06<00:16,  4.14it/s] 31%|███▏      | 31/99 [00:06<00:14,  4.63it/s] 32%|███▏      | 32/99 [00:06<00:13,  4.94it/s] 33%|███▎      | 33/99 [00:07<00:15,  4.29it/s]
+Please wait for a moment:  13%|█▎        | 9/69 [00:07<01:54,  1.90s/it][A
+Please wait for a moment:  14%|█▍        | 10/69 [00:07<01:20,  1.37s/it][A 34%|███▍      | 34/99 [00:07<00:16,  3.84it/s]
+Please wait for a moment:  16%|█▌        | 11/69 [00:07<00:58,  1.00s/it][A
+Please wait for a moment:  17%|█▋        | 12/69 [00:07<00:42,  1.33it/s][A 35%|███▌      | 35/99 [00:07<00:17,  3.62it/s]
+Please wait for a moment:  19%|█▉        | 13/69 [00:07<00:32,  1.71it/s][A 36%|███▋      | 36/99 [00:07<00:15,  3.96it/s] 37%|███▋      | 37/99 [00:08<00:14,  4.27it/s]
+Please wait for a moment:  20%|██        | 14/69 [00:08<00:25,  2.14it/s][A
+Please wait for a moment:  22%|██▏       | 15/69 [00:08<00:20,  2.63it/s][A 38%|███▊      | 38/99 [00:08<00:16,  3.66it/s]
+Please wait for a moment:  23%|██▎       | 16/69 [00:08<00:17,  3.11it/s][A 39%|███▉      | 39/99 [00:08<00:14,  4.11it/s]
+Please wait for a moment:  25%|██▍       | 17/69 [00:08<00:14,  3.55it/s][A
+Please wait for a moment:  26%|██▌       | 18/69 [00:08<00:12,  3.97it/s][A 40%|████      | 40/99 [00:08<00:16,  3.64it/s]
+Please wait for a moment:  28%|██▊       | 19/69 [00:08<00:11,  4.34it/s][A 41%|████▏     | 41/99 [00:09<00:14,  3.88it/s]
+Please wait for a moment:  29%|██▉       | 20/69 [00:09<00:10,  4.56it/s][A
+Please wait for a moment:  30%|███       | 21/69 [00:09<00:09,  4.86it/s][A 42%|████▏     | 42/99 [00:09<00:16,  3.48it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:09<00:09,  4.96it/s][A 43%|████▎     | 43/99 [00:09<00:14,  3.86it/s]
+Please wait for a moment:  33%|███▎      | 23/69 [00:09<00:09,  5.10it/s][A
+Please wait for a moment:  35%|███▍      | 24/69 [00:09<00:08,  5.28it/s][A 44%|████▍     | 44/99 [00:10<00:15,  3.56it/s] 45%|████▌     | 45/99 [00:10<00:13,  4.04it/s] 46%|████▋     | 46/99 [00:10<00:14,  3.75it/s]
+Please wait for a moment:  36%|███▌      | 25/69 [00:10<00:14,  3.03it/s][A
+Please wait for a moment:  38%|███▊      | 26/69 [00:10<00:12,  3.52it/s][A                                               
+Please wait for a moment:  39%|███▉      | 27/69 [00:10<00:11,  3.55it/s][A
+Please wait for a moment:  41%|████      | 28/69 [00:11<00:12,  3.34it/s][A
+Please wait for a moment:  42%|████▏     | 29/69 [00:11<00:13,  2.95it/s][A
+Please wait for a moment:  43%|████▎     | 30/69 [00:11<00:11,  3.37it/s][A
+Please wait for a moment:  45%|████▍     | 31/69 [00:12<00:10,  3.79it/s][A
+Please wait for a moment:  46%|████▋     | 32/69 [00:12<00:09,  3.95it/s][A
+Please wait for a moment:  48%|████▊     | 33/69 [00:12<00:08,  4.08it/s][A
+Please wait for a moment:  49%|████▉     | 34/69 [00:12<00:08,  4.14it/s][A
+Please wait for a moment:  51%|█████     | 35/69 [00:13<00:07,  4.54it/s][A
+Please wait for a moment:  52%|█████▏    | 36/69 [00:13<00:06,  4.88it/s][A
+Please wait for a moment:  54%|█████▎    | 37/69 [00:13<00:09,  3.33it/s][A
+Please wait for a moment:  55%|█████▌    | 38/69 [00:14<00:16,  1.88it/s][A
+Please wait for a moment:  57%|█████▋    | 39/69 [00:14<00:12,  2.33it/s][A
+Please wait for a moment:  58%|█████▊    | 40/69 [00:15<00:10,  2.84it/s][A
+Please wait for a moment:  59%|█████▉    | 41/69 [00:15<00:08,  3.34it/s][A
+Please wait for a moment:  61%|██████    | 42/69 [00:15<00:07,  3.82it/s][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:15<00:06,  4.27it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:15<00:05,  4.55it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:16<00:05,  4.75it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:16<00:04,  5.03it/s][A
+Please wait for a moment:  68%|██████▊   | 47/69 [00:18<00:15,  1.41it/s][A
+Please wait for a moment:  70%|██████▉   | 48/69 [00:18<00:11,  1.83it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:18<00:08,  2.31it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:18<00:06,  2.80it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:19<00:08,  2.20it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:19<00:06,  2.69it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:19<00:05,  3.14it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:19<00:04,  3.60it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:20<00:03,  4.09it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:20<00:02,  4.47it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:20<00:02,  4.80it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:20<00:02,  4.97it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:21<00:03,  3.05it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:21<00:02,  3.51it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:21<00:02,  3.95it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:21<00:01,  4.36it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:22<00:01,  3.13it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:22<00:01,  3.61it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:22<00:01,  3.93it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:23<00:00,  3.41it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:23<00:00,  3.91it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:23<00:00,  4.23it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:23<00:00,  4.86it/s][A
+                                                                         [A>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     180.101.245.247:17606 - "GET /api/fund/query?code=008163&is_pro=false HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62985 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62986 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62987 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62988 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:62986 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 5秒 < 30秒，直接返回。
+INFO:     171.219.190.254:62989 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62989 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62990 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62991 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62992 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62990 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62989 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62992 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62991 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62989 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62990 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62991 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62992 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62989 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62990 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62992 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62993 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62989 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62990 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62993 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:62992 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63011 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 0秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63013 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63012 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63013 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63012 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63014 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63015 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63013 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63012 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63015 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63014 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63013 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63012 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63014 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63015 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63012 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63013 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63015 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63014 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63012 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63013 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63015 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63014 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 18秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63021 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63023 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63024 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63025 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63026 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63023 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63024 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63026 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63025 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 40秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63027 - "GET /api/fund/query?code=008163&is_pro=false HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 45秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63027 - "GET /api/fund/query?code=008163&is_pro=false HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63027 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 0秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63028 - "GET /api/fund/query?code=015394&is_pro=false HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63028 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63027 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63029 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63030 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63028 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63027 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63030 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63029 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 3秒 < 60秒，直接返回。
+INFO:     171.219.190.254:63028 - "GET /api/fund/query?code=020741&is_pro=false HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 29秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63037 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63047 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63048 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63049 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63046 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63047 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63047 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 3秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63046 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 6秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63047 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63047 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 8秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63046 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 11秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63047 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63047 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 12秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63046 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     171.219.190.254:63046 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 15秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63047 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 17秒 < 30秒，直接返回。
+INFO:     171.219.190.254:63047 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A  1%|          | 1/99 [00:00<00:14,  6.69it/s]
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:12,  5.53it/s][A  2%|▏         | 2/99 [00:00<00:15,  6.40it/s]  3%|▎         | 3/99 [00:00<00:14,  6.52it/s]  4%|▍         | 4/99 [00:00<00:14,  6.78it/s]  5%|▌         | 5/99 [00:00<00:13,  6.83it/s]  6%|▌         | 6/99 [00:00<00:13,  6.95it/s]  7%|▋         | 7/99 [00:01<00:13,  6.83it/s]
+Please wait for a moment:   3%|▎         | 2/69 [00:01<00:46,  1.44it/s][A  8%|▊         | 8/99 [00:01<00:17,  5.19it/s]
+Please wait for a moment:   4%|▍         | 3/69 [00:01<00:30,  2.17it/s][A  9%|▉         | 9/99 [00:01<00:16,  5.36it/s]
+Please wait for a moment:   6%|▌         | 4/69 [00:01<00:22,  2.89it/s][A 10%|█         | 10/99 [00:01<00:16,  5.51it/s]
+Please wait for a moment:   7%|▋         | 5/69 [00:01<00:18,  3.55it/s][A 11%|█         | 11/99 [00:02<00:20,  4.40it/s]
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:16,  3.78it/s][A
+Please wait for a moment:  10%|█         | 7/69 [00:02<00:14,  4.26it/s][A 12%|█▏        | 12/99 [00:02<00:23,  3.73it/s]
+Please wait for a moment:  12%|█▏        | 8/69 [00:02<00:13,  4.63it/s][A 13%|█▎        | 13/99 [00:02<00:21,  4.02it/s]
+Please wait for a moment:  13%|█▎        | 9/69 [00:02<00:12,  4.90it/s][A
+Please wait for a moment:  14%|█▍        | 10/69 [00:02<00:11,  5.15it/s][A 14%|█▍        | 14/99 [00:02<00:23,  3.61it/s]
+Please wait for a moment:  16%|█▌        | 11/69 [00:02<00:11,  5.20it/s][A 15%|█▌        | 15/99 [00:03<00:21,  3.85it/s]
+Please wait for a moment:  17%|█▋        | 12/69 [00:03<00:10,  5.20it/s][A
+Please wait for a moment:  19%|█▉        | 13/69 [00:03<00:10,  5.31it/s][A 16%|█▌        | 16/99 [00:03<00:20,  4.15it/s]
+Please wait for a moment:  20%|██        | 14/69 [00:03<00:10,  5.42it/s][A 17%|█▋        | 17/99 [00:03<00:18,  4.51it/s]
+Please wait for a moment:  22%|██▏       | 15/69 [00:03<00:09,  5.51it/s][A 18%|█▊        | 18/99 [00:03<00:16,  4.81it/s]
+Please wait for a moment:  23%|██▎       | 16/69 [00:03<00:09,  5.56it/s][A 19%|█▉        | 19/99 [00:03<00:15,  5.04it/s]
+Please wait for a moment:  25%|██▍       | 17/69 [00:03<00:09,  5.57it/s][A 20%|██        | 20/99 [00:04<00:15,  5.20it/s] 21%|██        | 21/99 [00:04<00:14,  5.29it/s]
+Please wait for a moment:  26%|██▌       | 18/69 [00:04<00:09,  5.49it/s][A 22%|██▏       | 22/99 [00:04<00:14,  5.45it/s]
+Please wait for a moment:  28%|██▊       | 19/69 [00:04<00:09,  5.47it/s][A
+Please wait for a moment:  29%|██▉       | 20/69 [00:04<00:08,  5.55it/s][A 23%|██▎       | 23/99 [00:04<00:14,  5.34it/s] 24%|██▍       | 24/99 [00:04<00:13,  5.76it/s] 25%|██▌       | 25/99 [00:04<00:12,  6.13it/s] 26%|██▋       | 26/99 [00:05<00:11,  6.15it/s] 27%|██▋       | 27/99 [00:05<00:11,  6.26it/s]
+Please wait for a moment:  30%|███       | 21/69 [00:05<00:17,  2.81it/s][A 28%|██▊       | 28/99 [00:05<00:11,  6.02it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:05<00:14,  3.28it/s][A 29%|██▉       | 29/99 [00:05<00:11,  5.89it/s]
+Please wait for a moment:  33%|███▎      | 23/69 [00:05<00:12,  3.72it/s][A 30%|███       | 30/99 [00:05<00:12,  5.58it/s]
+Please wait for a moment:  35%|███▍      | 24/69 [00:05<00:11,  4.07it/s][A 31%|███▏      | 31/99 [00:05<00:12,  5.65it/s] 32%|███▏      | 32/99 [00:06<00:12,  5.56it/s]
+Please wait for a moment:  36%|███▌      | 25/69 [00:06<00:10,  4.32it/s][A
+Please wait for a moment:  38%|███▊      | 26/69 [00:06<00:09,  4.69it/s][A 33%|███▎      | 33/99 [00:06<00:11,  5.55it/s] 34%|███▍      | 34/99 [00:06<00:13,  4.72it/s] 35%|███▌      | 35/99 [00:06<00:13,  4.87it/s]
+Please wait for a moment:  39%|███▉      | 27/69 [00:06<00:13,  3.19it/s][A 36%|███▋      | 36/99 [00:06<00:12,  4.99it/s]
+Please wait for a moment:  41%|████      | 28/69 [00:06<00:11,  3.59it/s][A 37%|███▋      | 37/99 [00:07<00:12,  4.81it/s]
+Please wait for a moment:  42%|████▏     | 29/69 [00:07<00:09,  4.03it/s][A 38%|███▊      | 38/99 [00:07<00:12,  4.82it/s]
+Please wait for a moment:  43%|████▎     | 30/69 [00:07<00:08,  4.38it/s][A
+Please wait for a moment:  45%|████▍     | 31/69 [00:07<00:08,  4.68it/s][A 39%|███▉      | 39/99 [00:07<00:12,  4.97it/s]
+Please wait for a moment:  46%|████▋     | 32/69 [00:07<00:07,  4.91it/s][A 40%|████      | 40/99 [00:07<00:11,  5.13it/s]
+Please wait for a moment:  48%|████▊     | 33/69 [00:07<00:07,  4.93it/s][A 41%|████▏     | 41/99 [00:08<00:13,  4.25it/s]
+Please wait for a moment:  49%|████▉     | 34/69 [00:08<00:06,  5.03it/s][A 42%|████▏     | 42/99 [00:08<00:12,  4.48it/s]
+Please wait for a moment:  51%|█████     | 35/69 [00:08<00:06,  5.07it/s][A 43%|████▎     | 43/99 [00:08<00:12,  4.52it/s]
+Please wait for a moment:  52%|█████▏    | 36/69 [00:08<00:06,  5.08it/s][A 44%|████▍     | 44/99 [00:08<00:12,  4.56it/s]
+Please wait for a moment:  54%|█████▎    | 37/69 [00:08<00:06,  5.20it/s][A 45%|████▌     | 45/99 [00:08<00:11,  4.81it/s]
+Please wait for a moment:  55%|█████▌    | 38/69 [00:08<00:05,  5.24it/s][A 46%|████▋     | 46/99 [00:09<00:10,  4.89it/s]
+Please wait for a moment:  57%|█████▋    | 39/69 [00:09<00:05,  5.16it/s][A
+Please wait for a moment:  58%|█████▊    | 40/69 [00:09<00:05,  5.22it/s][A                                               
+Please wait for a moment:  59%|█████▉    | 41/69 [00:09<00:05,  4.77it/s][A
+Please wait for a moment:  61%|██████    | 42/69 [00:09<00:07,  3.78it/s][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:10<00:07,  3.44it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:10<00:06,  3.68it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:10<00:05,  4.16it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:10<00:05,  4.54it/s][A
+Please wait for a moment:  68%|██████▊   | 47/69 [00:10<00:04,  4.87it/s][A
+Please wait for a moment:  70%|██████▉   | 48/69 [00:11<00:04,  5.09it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:11<00:03,  5.17it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:11<00:03,  5.36it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:11<00:03,  5.35it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:11<00:03,  5.31it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:12<00:02,  5.34it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:12<00:02,  5.49it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:12<00:02,  5.50it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:12<00:02,  5.57it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:12<00:02,  5.63it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:12<00:01,  5.52it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:13<00:01,  5.58it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:13<00:02,  3.26it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:14<00:03,  2.34it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:14<00:02,  2.85it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:14<00:01,  3.31it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:14<00:01,  3.81it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:15<00:01,  2.60it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:15<00:00,  3.07it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:16<00:00,  2.51it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:16<00:00,  2.23it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:17<00:00,  2.80it/s][A
+                                                                         [A>>> [缓存命中] 数据年龄 475秒 < 1800秒，直接返回。
+INFO:     171.219.190.254:63141 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:12,  5.48it/s][A  1%|          | 1/99 [00:00<00:27,  3.58it/s]
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:12,  5.37it/s][A  2%|▏         | 2/99 [00:00<00:22,  4.37it/s]
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:12,  5.22it/s][A  3%|▎         | 3/99 [00:00<00:26,  3.61it/s]
+Please wait for a moment:   6%|▌         | 4/69 [00:00<00:12,  5.39it/s][A  4%|▍         | 4/99 [00:00<00:22,  4.17it/s]  5%|▌         | 5/99 [00:01<00:19,  4.84it/s]  6%|▌         | 6/99 [00:01<00:17,  5.18it/s]
+Please wait for a moment:   7%|▋         | 5/69 [00:01<00:22,  2.82it/s][A  7%|▋         | 7/99 [00:01<00:17,  5.29it/s]
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:18,  3.38it/s][A  8%|▊         | 8/99 [00:01<00:17,  5.30it/s]
+Please wait for a moment:  10%|█         | 7/69 [00:01<00:15,  3.92it/s][A  9%|▉         | 9/99 [00:01<00:16,  5.39it/s]
+Please wait for a moment:  12%|█▏        | 8/69 [00:01<00:14,  4.28it/s][A 10%|█         | 10/99 [00:02<00:16,  5.50it/s]
+Please wait for a moment:  13%|█▎        | 9/69 [00:02<00:14,  4.28it/s][A 11%|█         | 11/99 [00:02<00:18,  4.68it/s]
+Please wait for a moment:  14%|█▍        | 10/69 [00:02<00:13,  4.42it/s][A 12%|█▏        | 12/99 [00:02<00:18,  4.79it/s]
+Please wait for a moment:  16%|█▌        | 11/69 [00:02<00:12,  4.66it/s][A 13%|█▎        | 13/99 [00:02<00:17,  5.06it/s]
+Please wait for a moment:  17%|█▋        | 12/69 [00:02<00:12,  4.73it/s][A 14%|█▍        | 14/99 [00:02<00:16,  5.00it/s]
+Please wait for a moment:  19%|█▉        | 13/69 [00:02<00:11,  5.00it/s][A 15%|█▌        | 15/99 [00:03<00:15,  5.38it/s]
+Please wait for a moment:  20%|██        | 14/69 [00:03<00:10,  5.18it/s][A 16%|█▌        | 16/99 [00:03<00:19,  4.30it/s]
+Please wait for a moment:  22%|██▏       | 15/69 [00:03<00:10,  5.20it/s][A
+Please wait for a moment:  23%|██▎       | 16/69 [00:03<00:09,  5.36it/s][A 17%|█▋        | 17/99 [00:03<00:18,  4.52it/s]
+Please wait for a moment:  25%|██▍       | 17/69 [00:03<00:09,  5.48it/s][A 18%|█▊        | 18/99 [00:03<00:16,  4.84it/s]
+Please wait for a moment:  26%|██▌       | 18/69 [00:03<00:09,  5.57it/s][A
+Please wait for a moment:  28%|██▊       | 19/69 [00:04<00:08,  5.61it/s][A 19%|█▉        | 19/99 [00:04<00:19,  4.01it/s]
+Please wait for a moment:  29%|██▉       | 20/69 [00:04<00:08,  5.50it/s][A 20%|██        | 20/99 [00:04<00:21,  3.70it/s]
+Please wait for a moment:  30%|███       | 21/69 [00:04<00:08,  5.47it/s][A 21%|██        | 21/99 [00:04<00:19,  3.93it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:04<00:08,  5.36it/s][A
+Please wait for a moment:  33%|███▎      | 23/69 [00:04<00:08,  5.50it/s][A 22%|██▏       | 22/99 [00:04<00:18,  4.15it/s] 23%|██▎       | 23/99 [00:05<00:16,  4.57it/s]
+Please wait for a moment:  35%|███▍      | 24/69 [00:04<00:08,  5.49it/s][A 24%|██▍       | 24/99 [00:05<00:18,  3.97it/s] 25%|██▌       | 25/99 [00:05<00:16,  4.57it/s]
+Please wait for a moment:  36%|███▌      | 25/69 [00:05<00:14,  3.09it/s][A 26%|██▋       | 26/99 [00:05<00:15,  4.73it/s] 27%|██▋       | 27/99 [00:05<00:13,  5.26it/s] 28%|██▊       | 28/99 [00:06<00:16,  4.33it/s]
+Please wait for a moment:  38%|███▊      | 26/69 [00:06<00:18,  2.32it/s][A 29%|██▉       | 29/99 [00:06<00:17,  3.95it/s] 30%|███       | 30/99 [00:06<00:15,  4.50it/s] 31%|███▏      | 31/99 [00:06<00:13,  5.01it/s] 32%|███▏      | 32/99 [00:06<00:12,  5.42it/s] 33%|███▎      | 33/99 [00:07<00:11,  5.81it/s] 34%|███▍      | 34/99 [00:07<00:10,  6.10it/s]
+Please wait for a moment:  39%|███▉      | 27/69 [00:07<00:25,  1.64it/s][A 35%|███▌      | 35/99 [00:07<00:11,  5.74it/s] 36%|███▋      | 36/99 [00:07<00:10,  6.07it/s] 37%|███▋      | 37/99 [00:07<00:12,  4.95it/s] 38%|███▊      | 38/99 [00:07<00:11,  5.44it/s] 39%|███▉      | 39/99 [00:08<00:10,  5.82it/s]
+Please wait for a moment:  41%|████      | 28/69 [00:08<00:27,  1.48it/s][A 40%|████      | 40/99 [00:08<00:10,  5.69it/s]
+Please wait for a moment:  42%|████▏     | 29/69 [00:08<00:21,  1.89it/s][A 41%|████▏     | 41/99 [00:08<00:10,  5.59it/s]
+Please wait for a moment:  43%|████▎     | 30/69 [00:08<00:16,  2.34it/s][A 42%|████▏     | 42/99 [00:08<00:10,  5.47it/s]
+Please wait for a moment:  45%|████▍     | 31/69 [00:08<00:13,  2.82it/s][A 43%|████▎     | 43/99 [00:08<00:09,  5.63it/s]
+Please wait for a moment:  46%|████▋     | 32/69 [00:08<00:11,  3.28it/s][A 44%|████▍     | 44/99 [00:09<00:09,  5.62it/s]
+Please wait for a moment:  48%|████▊     | 33/69 [00:09<00:09,  3.77it/s][A 45%|████▌     | 45/99 [00:09<00:09,  5.49it/s]
+Please wait for a moment:  49%|████▉     | 34/69 [00:09<00:08,  4.14it/s][A 46%|████▋     | 46/99 [00:09<00:09,  5.43it/s]
+Please wait for a moment:  51%|█████     | 35/69 [00:09<00:07,  4.50it/s][A
+Please wait for a moment:  52%|█████▏    | 36/69 [00:09<00:07,  4.71it/s][A                                               
+Please wait for a moment:  54%|█████▎    | 37/69 [00:10<00:08,  3.67it/s][A
+Please wait for a moment:  55%|█████▌    | 38/69 [00:10<00:09,  3.30it/s][A
+Please wait for a moment:  57%|█████▋    | 39/69 [00:11<00:12,  2.47it/s][A
+Please wait for a moment:  58%|█████▊    | 40/69 [00:11<00:09,  2.98it/s][A
+Please wait for a moment:  59%|█████▉    | 41/69 [00:11<00:08,  3.47it/s][A
+Please wait for a moment:  61%|██████    | 42/69 [00:11<00:06,  3.94it/s][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:11<00:06,  4.30it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:11<00:05,  4.69it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:12<00:04,  4.87it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:12<00:04,  5.05it/s][A
+Please wait for a moment:  68%|██████▊   | 47/69 [00:12<00:04,  5.20it/s][A
+Please wait for a moment:  70%|██████▉   | 48/69 [00:13<00:06,  3.18it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:13<00:05,  3.68it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:13<00:04,  4.16it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:13<00:03,  4.55it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:13<00:03,  4.80it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:13<00:03,  5.02it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:14<00:02,  5.17it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:14<00:02,  5.33it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:14<00:02,  5.44it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:14<00:02,  5.49it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:15<00:03,  3.11it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:15<00:02,  3.63it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:15<00:02,  4.09it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:15<00:01,  4.40it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:16<00:02,  3.14it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:16<00:01,  3.65it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:16<00:01,  4.09it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:16<00:00,  4.41it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:17<00:00,  4.71it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:17<00:00,  4.95it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:17<00:00,  5.19it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:17<00:00,  5.70it/s][A
+                                                                         [A>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     171.219.190.254:63017 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+  0%|          | 0/99 [00:00<?, ?it/s]  1%|          | 1/99 [00:00<00:18,  5.32it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:12,  5.50it/s][A  2%|▏         | 2/99 [00:00<00:24,  4.03it/s]
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:12,  5.39it/s][A  3%|▎         | 3/99 [00:00<00:22,  4.28it/s]
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:11,  5.57it/s][A  4%|▍         | 4/99 [00:00<00:21,  4.35it/s]
+Please wait for a moment:   6%|▌         | 4/69 [00:00<00:11,  5.63it/s][A
+Please wait for a moment:   7%|▋         | 5/69 [00:00<00:11,  5.75it/s][A  5%|▌         | 5/99 [00:01<00:20,  4.67it/s]
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:11,  5.58it/s][A  6%|▌         | 6/99 [00:01<00:22,  4.06it/s]
+Please wait for a moment:  10%|█         | 7/69 [00:01<00:11,  5.49it/s][A
+Please wait for a moment:  12%|█▏        | 8/69 [00:01<00:10,  5.58it/s][A  7%|▋         | 7/99 [00:01<00:25,  3.68it/s]
+Please wait for a moment:  13%|█▎        | 9/69 [00:01<00:10,  5.53it/s][A
+Please wait for a moment:  14%|█▍        | 10/69 [00:01<00:10,  5.53it/s][A  8%|▊         | 8/99 [00:02<00:26,  3.38it/s]
+Please wait for a moment:  16%|█▌        | 11/69 [00:01<00:10,  5.46it/s][A  9%|▉         | 9/99 [00:02<00:22,  3.92it/s]
+Please wait for a moment:  17%|█▋        | 12/69 [00:02<00:10,  5.58it/s][A 10%|█         | 10/99 [00:02<00:20,  4.39it/s]
+Please wait for a moment:  19%|█▉        | 13/69 [00:02<00:10,  5.55it/s][A 11%|█         | 11/99 [00:02<00:23,  3.77it/s]
+Please wait for a moment:  20%|██        | 14/69 [00:02<00:15,  3.56it/s][A 12%|█▏        | 12/99 [00:03<00:24,  3.60it/s]
+Please wait for a moment:  22%|██▏       | 15/69 [00:03<00:13,  4.03it/s][A 13%|█▎        | 13/99 [00:03<00:21,  3.99it/s]
+Please wait for a moment:  23%|██▎       | 16/69 [00:03<00:12,  4.40it/s][A
+Please wait for a moment:  25%|██▍       | 17/69 [00:03<00:10,  4.77it/s][A 14%|█▍        | 14/99 [00:03<00:23,  3.63it/s] 15%|█▌        | 15/99 [00:03<00:23,  3.50it/s] 16%|█▌        | 16/99 [00:04<00:21,  3.93it/s]
+Please wait for a moment:  26%|██▌       | 18/69 [00:03<00:15,  3.20it/s][A 17%|█▋        | 17/99 [00:04<00:22,  3.61it/s]
+Please wait for a moment:  28%|██▊       | 19/69 [00:04<00:18,  2.63it/s][A 18%|█▊        | 18/99 [00:04<00:22,  3.60it/s] 19%|█▉        | 19/99 [00:04<00:22,  3.55it/s]
+Please wait for a moment:  29%|██▉       | 20/69 [00:05<00:21,  2.25it/s][A 20%|██        | 20/99 [00:05<00:23,  3.30it/s]
+Please wait for a moment:  30%|███       | 21/69 [00:05<00:17,  2.74it/s][A 21%|██        | 21/99 [00:05<00:20,  3.83it/s] 22%|██▏       | 22/99 [00:05<00:17,  4.28it/s] 23%|██▎       | 23/99 [00:05<00:15,  4.81it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:05<00:19,  2.43it/s][A 24%|██▍       | 24/99 [00:05<00:14,  5.14it/s] 25%|██▌       | 25/99 [00:06<00:13,  5.55it/s] 26%|██▋       | 26/99 [00:06<00:16,  4.53it/s]
+Please wait for a moment:  33%|███▎      | 23/69 [00:06<00:19,  2.31it/s][A 27%|██▋       | 27/99 [00:06<00:15,  4.67it/s]
+Please wait for a moment:  35%|███▍      | 24/69 [00:06<00:16,  2.70it/s][A 28%|██▊       | 28/99 [00:06<00:14,  4.82it/s] 29%|██▉       | 29/99 [00:06<00:13,  5.30it/s] 30%|███       | 30/99 [00:07<00:13,  5.30it/s]
+Please wait for a moment:  36%|███▌      | 25/69 [00:06<00:18,  2.43it/s][A 31%|███▏      | 31/99 [00:07<00:12,  5.55it/s] 32%|███▏      | 32/99 [00:07<00:11,  5.72it/s]
+Please wait for a moment:  38%|███▊      | 26/69 [00:07<00:19,  2.15it/s][A 33%|███▎      | 33/99 [00:07<00:14,  4.65it/s] 34%|███▍      | 34/99 [00:07<00:12,  5.14it/s] 35%|███▌      | 35/99 [00:08<00:14,  4.51it/s]
+Please wait for a moment:  39%|███▉      | 27/69 [00:08<00:21,  1.95it/s][A 36%|███▋      | 36/99 [00:08<00:16,  3.83it/s] 37%|███▋      | 37/99 [00:08<00:14,  4.32it/s]
+Please wait for a moment:  41%|████      | 28/69 [00:08<00:20,  1.97it/s][A 38%|███▊      | 38/99 [00:09<00:15,  3.98it/s] 39%|███▉      | 39/99 [00:09<00:13,  4.57it/s] 40%|████      | 40/99 [00:09<00:11,  5.10it/s] 41%|████▏     | 41/99 [00:09<00:11,  5.15it/s]
+Please wait for a moment:  42%|████▏     | 29/69 [00:09<00:21,  1.84it/s][A 42%|████▏     | 42/99 [00:09<00:10,  5.41it/s] 43%|████▎     | 43/99 [00:09<00:09,  5.74it/s] 44%|████▍     | 44/99 [00:09<00:08,  6.14it/s]
+Please wait for a moment:  43%|████▎     | 30/69 [00:09<00:21,  1.80it/s][A 45%|████▌     | 45/99 [00:10<00:11,  4.62it/s] 46%|████▋     | 46/99 [00:10<00:10,  5.11it/s]                                               
+Please wait for a moment:  45%|████▍     | 31/69 [00:10<00:23,  1.65it/s][A
+Please wait for a moment:  46%|████▋     | 32/69 [00:10<00:19,  1.88it/s][A
+Please wait for a moment:  48%|████▊     | 33/69 [00:11<00:16,  2.13it/s][A
+Please wait for a moment:  49%|████▉     | 34/69 [00:11<00:17,  2.03it/s][A
+Please wait for a moment:  51%|█████     | 35/69 [00:12<00:19,  1.79it/s][A
+Please wait for a moment:  52%|█████▏    | 36/69 [00:13<00:20,  1.58it/s][A
+Please wait for a moment:  54%|█████▎    | 37/69 [00:14<00:20,  1.54it/s][A
+Please wait for a moment:  55%|█████▌    | 38/69 [00:14<00:15,  1.96it/s][A
+Please wait for a moment:  57%|█████▋    | 39/69 [00:14<00:16,  1.86it/s][A
+Please wait for a moment:  58%|█████▊    | 40/69 [00:15<00:15,  1.86it/s][A
+Please wait for a moment:  59%|█████▉    | 41/69 [00:15<00:12,  2.33it/s][A
+Please wait for a moment:  61%|██████    | 42/69 [00:16<00:14,  1.87it/s][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:16<00:14,  1.75it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:17<00:11,  2.19it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:17<00:08,  2.70it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:17<00:09,  2.35it/s][A
+Please wait for a moment:  68%|██████▊   | 47/69 [00:18<00:09,  2.22it/s][A
+Please wait for a moment:  70%|██████▉   | 48/69 [00:18<00:07,  2.70it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:19<00:08,  2.31it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:19<00:10,  1.85it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:20<00:09,  1.85it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:21<00:11,  1.54it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:21<00:08,  1.98it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:22<00:08,  1.79it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:22<00:07,  1.94it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:23<00:06,  1.93it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:23<00:04,  2.42it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:23<00:03,  2.89it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:24<00:04,  2.48it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:24<00:03,  2.95it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:24<00:03,  2.56it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:25<00:02,  2.33it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:25<00:02,  2.84it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:25<00:01,  3.35it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:25<00:01,  3.80it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:26<00:00,  4.18it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:26<00:00,  4.51it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:26<00:00,  4.79it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:26<00:00,  3.10it/s][A
+                                                                         [A  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A  1%|          | 1/99 [00:00<00:14,  6.96it/s]
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:14,  4.79it/s][A
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:14,  4.61it/s][A  2%|▏         | 2/99 [00:00<00:26,  3.73it/s]  3%|▎         | 3/99 [00:00<00:21,  4.46it/s]
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:13,  5.03it/s][A
+Please wait for a moment:   6%|▌         | 4/69 [00:00<00:12,  5.34it/s][A
+Please wait for a moment:   7%|▋         | 5/69 [00:00<00:11,  5.55it/s][A  4%|▍         | 4/99 [00:01<00:25,  3.68it/s]  5%|▌         | 5/99 [00:01<00:21,  4.38it/s]  6%|▌         | 6/99 [00:01<00:24,  3.86it/s]
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:18,  3.47it/s][A
+Please wait for a moment:  10%|█         | 7/69 [00:01<00:15,  4.01it/s][A  7%|▋         | 7/99 [00:01<00:21,  4.18it/s]  8%|▊         | 8/99 [00:01<00:19,  4.77it/s]
+Please wait for a moment:  12%|█▏        | 8/69 [00:02<00:20,  3.04it/s][A  9%|▉         | 9/99 [00:02<00:22,  3.94it/s]
+Please wait for a moment:  13%|█▎        | 9/69 [00:02<00:17,  3.46it/s][A 10%|█         | 10/99 [00:02<00:24,  3.57it/s] 11%|█         | 11/99 [00:02<00:26,  3.35it/s] 12%|█▏        | 12/99 [00:03<00:24,  3.60it/s]
+Please wait for a moment:  14%|█▍        | 10/69 [00:03<00:24,  2.37it/s][A 13%|█▎        | 13/99 [00:03<00:20,  4.16it/s] 14%|█▍        | 14/99 [00:03<00:18,  4.69it/s] 15%|█▌        | 15/99 [00:03<00:17,  4.83it/s]
+Please wait for a moment:  16%|█▌        | 11/69 [00:03<00:26,  2.17it/s][A 16%|█▌        | 16/99 [00:03<00:16,  5.09it/s] 17%|█▋        | 17/99 [00:03<00:14,  5.53it/s] 18%|█▊        | 18/99 [00:04<00:18,  4.43it/s]
+Please wait for a moment:  17%|█▋        | 12/69 [00:04<00:29,  1.91it/s][A 19%|█▉        | 19/99 [00:04<00:17,  4.51it/s]
+Please wait for a moment:  19%|█▉        | 13/69 [00:04<00:24,  2.28it/s][A 20%|██        | 20/99 [00:04<00:17,  4.62it/s]
+Please wait for a moment:  20%|██        | 14/69 [00:04<00:20,  2.74it/s][A
+Please wait for a moment:  22%|██▏       | 15/69 [00:04<00:16,  3.23it/s][A 21%|██        | 21/99 [00:04<00:18,  4.11it/s] 22%|██▏       | 22/99 [00:05<00:16,  4.61it/s] 23%|██▎       | 23/99 [00:05<00:15,  4.99it/s] 24%|██▍       | 24/99 [00:05<00:17,  4.33it/s]
+Please wait for a moment:  23%|██▎       | 16/69 [00:05<00:23,  2.26it/s][A 25%|██▌       | 25/99 [00:05<00:19,  3.85it/s] 26%|██▋       | 26/99 [00:06<00:17,  4.28it/s]
+Please wait for a moment:  25%|██▍       | 17/69 [00:06<00:25,  2.02it/s][A 27%|██▋       | 27/99 [00:06<00:18,  3.91it/s] 28%|██▊       | 28/99 [00:06<00:16,  4.40it/s] 29%|██▉       | 29/99 [00:06<00:14,  4.94it/s] 30%|███       | 30/99 [00:06<00:13,  5.20it/s]
+Please wait for a moment:  26%|██▌       | 18/69 [00:06<00:28,  1.76it/s][A 31%|███▏      | 31/99 [00:07<00:16,  4.10it/s]
+Please wait for a moment:  28%|██▊       | 19/69 [00:07<00:22,  2.19it/s][A 32%|███▏      | 32/99 [00:07<00:17,  3.87it/s] 33%|███▎      | 33/99 [00:07<00:18,  3.59it/s]
+Please wait for a moment:  29%|██▉       | 20/69 [00:07<00:25,  1.89it/s][A 34%|███▍      | 34/99 [00:08<00:16,  3.93it/s] 35%|███▌      | 35/99 [00:08<00:14,  4.38it/s] 36%|███▋      | 36/99 [00:08<00:12,  4.96it/s]
+Please wait for a moment:  30%|███       | 21/69 [00:08<00:26,  1.78it/s][A 37%|███▋      | 37/99 [00:08<00:14,  4.32it/s] 38%|███▊      | 38/99 [00:08<00:12,  4.87it/s] 39%|███▉      | 39/99 [00:08<00:11,  5.26it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:09<00:26,  1.77it/s][A 40%|████      | 40/99 [00:09<00:13,  4.46it/s] 41%|████▏     | 41/99 [00:09<00:14,  3.89it/s]
+Please wait for a moment:  33%|███▎      | 23/69 [00:09<00:25,  1.81it/s][A 42%|████▏     | 42/99 [00:09<00:13,  4.30it/s] 43%|████▎     | 43/99 [00:09<00:11,  4.79it/s] 44%|████▍     | 44/99 [00:10<00:12,  4.34it/s]
+Please wait for a moment:  35%|███▍      | 24/69 [00:10<00:26,  1.72it/s][A 45%|████▌     | 45/99 [00:10<00:13,  3.89it/s] 46%|████▋     | 46/99 [00:10<00:14,  3.76it/s]                                               
+Please wait for a moment:  36%|███▌      | 25/69 [00:11<00:32,  1.35it/s][A
+Please wait for a moment:  38%|███▊      | 26/69 [00:12<00:31,  1.38it/s][A
+Please wait for a moment:  39%|███▉      | 27/69 [00:12<00:28,  1.49it/s][A
+Please wait for a moment:  41%|████      | 28/69 [00:13<00:28,  1.42it/s][A
+Please wait for a moment:  42%|████▏     | 29/69 [00:13<00:21,  1.84it/s][A
+Please wait for a moment:  43%|████▎     | 30/69 [00:14<00:22,  1.77it/s][A
+Please wait for a moment:  45%|████▍     | 31/69 [00:14<00:20,  1.84it/s][A
+Please wait for a moment:  46%|████▋     | 32/69 [00:15<00:21,  1.76it/s][A
+Please wait for a moment:  48%|████▊     | 33/69 [00:15<00:20,  1.73it/s][A
+Please wait for a moment:  49%|████▉     | 34/69 [00:16<00:16,  2.17it/s][A
+Please wait for a moment:  51%|█████     | 35/69 [00:16<00:16,  2.08it/s][A
+Please wait for a moment:  52%|█████▏    | 36/69 [00:17<00:17,  1.91it/s][A
+Please wait for a moment:  54%|█████▎    | 37/69 [00:17<00:16,  1.94it/s][A
+Please wait for a moment:  55%|█████▌    | 38/69 [00:18<00:16,  1.92it/s][A
+Please wait for a moment:  57%|█████▋    | 39/69 [00:18<00:17,  1.74it/s][A
+Please wait for a moment:  58%|█████▊    | 40/69 [00:19<00:14,  1.94it/s][A
+Please wait for a moment:  59%|█████▉    | 41/69 [00:20<00:19,  1.45it/s][A
+Please wait for a moment:  61%|██████    | 42/69 [00:20<00:17,  1.57it/s][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:21<00:17,  1.48it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:22<00:16,  1.52it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:23<00:17,  1.40it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:23<00:12,  1.79it/s][A
+Please wait for a moment:  68%|██████▊   | 47/69 [00:24<00:12,  1.69it/s][A
+Please wait for a moment:  70%|██████▉   | 48/69 [00:24<00:09,  2.13it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:24<00:08,  2.25it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:24<00:06,  2.77it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:24<00:05,  3.27it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:25<00:06,  2.70it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:26<00:06,  2.34it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:26<00:06,  2.18it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:26<00:05,  2.69it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:27<00:04,  2.62it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:27<00:05,  2.05it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:28<00:05,  1.86it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:28<00:04,  2.33it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:29<00:04,  1.97it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:29<00:04,  1.93it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:30<00:02,  2.41it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:30<00:02,  2.93it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:30<00:02,  2.31it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:31<00:01,  2.75it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:31<00:00,  3.03it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:31<00:00,  3.53it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:31<00:00,  4.00it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:32<00:00,  3.10it/s][A
+                                                                         [A>>> [缓存命中] 数据年龄 1284秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23838 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1284秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23839 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1287秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23838 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23839 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23838 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1289秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23839 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     199.45.155.75:55302 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     199.45.155.75:41232 - "GET / HTTP/1.1" 200 OK
+INFO:     199.45.155.75:41270 - "PRI %2A HTTP/2.0" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     199.45.155.75:41274 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     199.45.155.75:49420 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     199.45.155.75:49462 - "GET /.well-known/security.txt HTTP/1.1" 404 Not Found
+  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A  1%|          | 1/99 [00:00<00:21,  4.49it/s]
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:11,  5.84it/s][A  2%|▏         | 2/99 [00:00<00:21,  4.53it/s]
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:11,  5.62it/s][A  3%|▎         | 3/99 [00:00<00:19,  4.81it/s]
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:11,  5.71it/s][A  4%|▍         | 4/99 [00:00<00:17,  5.44it/s]  5%|▌         | 5/99 [00:01<00:22,  4.15it/s]
+Please wait for a moment:   6%|▌         | 4/69 [00:01<00:20,  3.17it/s][A  6%|▌         | 6/99 [00:01<00:20,  4.54it/s]  7%|▋         | 7/99 [00:01<00:23,  3.89it/s]  8%|▊         | 8/99 [00:01<00:21,  4.26it/s]
+Please wait for a moment:   7%|▋         | 5/69 [00:01<00:29,  2.17it/s][A
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:22,  2.77it/s][A  9%|▉         | 9/99 [00:02<00:25,  3.49it/s]
+Please wait for a moment:  10%|█         | 7/69 [00:02<00:18,  3.29it/s][A 10%|█         | 10/99 [00:02<00:21,  4.05it/s] 11%|█         | 11/99 [00:02<00:19,  4.46it/s] 12%|█▏        | 12/99 [00:02<00:19,  4.57it/s]
+Please wait for a moment:  12%|█▏        | 8/69 [00:02<00:23,  2.57it/s][A
+Please wait for a moment:  13%|█▎        | 9/69 [00:02<00:19,  3.12it/s][A 13%|█▎        | 13/99 [00:03<00:22,  3.74it/s]
+Please wait for a moment:  14%|█▍        | 10/69 [00:03<00:16,  3.63it/s][A
+Please wait for a moment:  16%|█▌        | 11/69 [00:03<00:14,  4.10it/s][A 14%|█▍        | 14/99 [00:03<00:24,  3.46it/s]
+Please wait for a moment:  17%|█▋        | 12/69 [00:03<00:12,  4.45it/s][A
+Please wait for a moment:  19%|█▉        | 13/69 [00:03<00:11,  4.83it/s][A 15%|█▌        | 15/99 [00:03<00:25,  3.33it/s]
+Please wait for a moment:  20%|██        | 14/69 [00:03<00:10,  5.01it/s][A 16%|█▌        | 16/99 [00:04<00:22,  3.67it/s]
+Please wait for a moment:  22%|██▏       | 15/69 [00:03<00:10,  5.10it/s][A 17%|█▋        | 17/99 [00:04<00:21,  3.89it/s]
+Please wait for a moment:  23%|██▎       | 16/69 [00:04<00:10,  5.21it/s][A 18%|█▊        | 18/99 [00:04<00:18,  4.49it/s] 19%|█▉        | 19/99 [00:04<00:16,  4.91it/s] 20%|██        | 20/99 [00:04<00:14,  5.29it/s]
+Please wait for a moment:  25%|██▍       | 17/69 [00:04<00:18,  2.75it/s][A 21%|██        | 21/99 [00:05<00:17,  4.44it/s]
+Please wait for a moment:  26%|██▌       | 18/69 [00:05<00:15,  3.26it/s][A
+Please wait for a moment:  28%|██▊       | 19/69 [00:05<00:13,  3.73it/s][A 22%|██▏       | 22/99 [00:05<00:20,  3.80it/s]
+Please wait for a moment:  29%|██▉       | 20/69 [00:05<00:11,  4.14it/s][A 23%|██▎       | 23/99 [00:05<00:18,  4.17it/s]
+Please wait for a moment:  30%|███       | 21/69 [00:05<00:10,  4.57it/s][A 24%|██▍       | 24/99 [00:05<00:20,  3.66it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:05<00:09,  4.70it/s][A
+Please wait for a moment:  33%|███▎      | 23/69 [00:05<00:09,  4.96it/s][A 25%|██▌       | 25/99 [00:06<00:21,  3.38it/s]
+Please wait for a moment:  35%|███▍      | 24/69 [00:06<00:08,  5.17it/s][A
+Please wait for a moment:  36%|███▌      | 25/69 [00:06<00:08,  5.41it/s][A
+Please wait for a moment:  38%|███▊      | 26/69 [00:06<00:07,  5.54it/s][A 26%|██▋       | 26/99 [00:06<00:22,  3.22it/s]
+Please wait for a moment:  39%|███▉      | 27/69 [00:06<00:07,  5.60it/s][A 27%|██▋       | 27/99 [00:06<00:22,  3.15it/s]
+Please wait for a moment:  41%|████      | 28/69 [00:06<00:07,  5.44it/s][A
+Please wait for a moment:  42%|████▏     | 29/69 [00:07<00:07,  5.41it/s][A 28%|██▊       | 28/99 [00:07<00:23,  3.02it/s]
+Please wait for a moment:  43%|████▎     | 30/69 [00:07<00:07,  5.38it/s][A 29%|██▉       | 29/99 [00:07<00:23,  3.01it/s]
+Please wait for a moment:  45%|████▍     | 31/69 [00:07<00:11,  3.43it/s][A 30%|███       | 30/99 [00:07<00:22,  3.08it/s]
+Please wait for a moment:  46%|████▋     | 32/69 [00:07<00:09,  3.87it/s][A
+Please wait for a moment:  48%|████▊     | 33/69 [00:08<00:08,  4.31it/s][A 31%|███▏      | 31/99 [00:08<00:21,  3.13it/s]
+Please wait for a moment:  49%|████▉     | 34/69 [00:08<00:07,  4.58it/s][A 32%|███▏      | 32/99 [00:08<00:21,  3.13it/s]
+Please wait for a moment:  51%|█████     | 35/69 [00:08<00:07,  4.74it/s][A 33%|███▎      | 33/99 [00:08<00:20,  3.16it/s] 34%|███▍      | 34/99 [00:09<00:17,  3.69it/s] 35%|███▌      | 35/99 [00:09<00:18,  3.50it/s]
+Please wait for a moment:  52%|█████▏    | 36/69 [00:09<00:12,  2.63it/s][A 36%|███▋      | 36/99 [00:09<00:19,  3.20it/s] 37%|███▋      | 37/99 [00:09<00:16,  3.68it/s] 38%|███▊      | 38/99 [00:10<00:17,  3.57it/s]
+Please wait for a moment:  54%|█████▎    | 37/69 [00:10<00:17,  1.88it/s][A
+Please wait for a moment:  55%|█████▌    | 38/69 [00:10<00:13,  2.36it/s][A 39%|███▉      | 39/99 [00:10<00:17,  3.42it/s] 40%|████      | 40/99 [00:10<00:14,  4.02it/s]
+Please wait for a moment:  57%|█████▋    | 39/69 [00:10<00:13,  2.15it/s][A 41%|████▏     | 41/99 [00:10<00:15,  3.64it/s]
+Please wait for a moment:  58%|█████▊    | 40/69 [00:11<00:11,  2.56it/s][A
+Please wait for a moment:  59%|█████▉    | 41/69 [00:11<00:09,  3.05it/s][A 42%|████▏     | 42/99 [00:11<00:17,  3.20it/s]
+Please wait for a moment:  61%|██████    | 42/69 [00:11<00:07,  3.52it/s][A 43%|████▎     | 43/99 [00:11<00:17,  3.15it/s]
+Please wait for a moment:  62%|██████▏   | 43/69 [00:11<00:06,  3.94it/s][A 44%|████▍     | 44/99 [00:11<00:15,  3.47it/s]
+Please wait for a moment:  64%|██████▍   | 44/69 [00:11<00:05,  4.23it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:12<00:05,  4.50it/s][A 45%|████▌     | 45/99 [00:12<00:14,  3.84it/s]
+Please wait for a moment:  67%|██████▋   | 46/69 [00:12<00:04,  4.71it/s][A 46%|████▋     | 46/99 [00:12<00:14,  3.65it/s]                                               
+Please wait for a moment:  68%|██████▊   | 47/69 [00:13<00:08,  2.58it/s][A
+Please wait for a moment:  70%|██████▉   | 48/69 [00:13<00:08,  2.58it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:13<00:06,  3.06it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:13<00:05,  3.51it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:13<00:04,  3.95it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:14<00:03,  4.33it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:14<00:03,  4.59it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:14<00:03,  4.80it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:14<00:02,  4.99it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:14<00:02,  5.12it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:15<00:02,  5.16it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:15<00:02,  5.22it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:15<00:01,  5.40it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:16<00:02,  3.08it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:16<00:03,  2.44it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:17<00:03,  1.90it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:17<00:03,  1.92it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:18<00:02,  1.78it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:19<00:02,  1.81it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:19<00:01,  1.89it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:19<00:00,  2.35it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:20<00:00,  2.15it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:21<00:00,  1.90it/s][A
+                                                                         [AINFO:     81.71.98.254:37803 - "GET /api/fund/sync_pool HTTP/1.1" 422 Unprocessable Entity
+  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A  1%|          | 1/99 [00:00<00:17,  5.58it/s]
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:43,  1.56it/s][A
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:24,  2.75it/s][A
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:18,  3.63it/s][A  2%|▏         | 2/99 [00:01<01:12,  1.33it/s]  3%|▎         | 3/99 [00:01<00:46,  2.07it/s]  4%|▍         | 4/99 [00:01<00:34,  2.73it/s]
+Please wait for a moment:   6%|▌         | 4/69 [00:01<00:30,  2.15it/s][A  5%|▌         | 5/99 [00:01<00:27,  3.38it/s]  6%|▌         | 6/99 [00:02<00:23,  3.99it/s]  7%|▋         | 7/99 [00:02<00:20,  4.55it/s]
+Please wait for a moment:   7%|▋         | 5/69 [00:02<00:30,  2.09it/s][A  8%|▊         | 8/99 [00:02<00:18,  4.81it/s]
+Please wait for a moment:   9%|▊         | 6/69 [00:02<00:23,  2.67it/s][A  9%|▉         | 9/99 [00:02<00:17,  5.08it/s] 10%|█         | 10/99 [00:02<00:16,  5.51it/s] 11%|█         | 11/99 [00:02<00:15,  5.69it/s]
+Please wait for a moment:  10%|█         | 7/69 [00:02<00:24,  2.54it/s][A 12%|█▏        | 12/99 [00:03<00:15,  5.61it/s]
+Please wait for a moment:  12%|█▏        | 8/69 [00:03<00:20,  3.03it/s][A 13%|█▎        | 13/99 [00:03<00:16,  5.27it/s] 14%|█▍        | 14/99 [00:03<00:15,  5.65it/s] 15%|█▌        | 15/99 [00:03<00:15,  5.43it/s]
+Please wait for a moment:  13%|█▎        | 9/69 [00:03<00:23,  2.60it/s][A 16%|█▌        | 16/99 [00:03<00:15,  5.22it/s]
+Please wait for a moment:  14%|█▍        | 10/69 [00:03<00:19,  3.10it/s][A 17%|█▋        | 17/99 [00:04<00:16,  4.95it/s]
+Please wait for a moment:  16%|█▌        | 11/69 [00:03<00:16,  3.56it/s][A 18%|█▊        | 18/99 [00:04<00:15,  5.29it/s] 19%|█▉        | 19/99 [00:04<00:15,  5.19it/s]
+Please wait for a moment:  17%|█▋        | 12/69 [00:04<00:18,  3.14it/s][A 20%|██        | 20/99 [00:04<00:14,  5.49it/s] 21%|██        | 21/99 [00:04<00:13,  5.88it/s]
+Please wait for a moment:  19%|█▉        | 13/69 [00:04<00:19,  2.93it/s][A 22%|██▏       | 22/99 [00:04<00:13,  5.69it/s]
+Please wait for a moment:  20%|██        | 14/69 [00:04<00:16,  3.42it/s][A
+Please wait for a moment:  22%|██▏       | 15/69 [00:05<00:13,  3.91it/s][A
+Please wait for a moment:  23%|██▎       | 16/69 [00:05<00:12,  4.36it/s][A
+Please wait for a moment:  25%|██▍       | 17/69 [00:05<00:10,  4.75it/s][A
+Please wait for a moment:  26%|██▌       | 18/69 [00:05<00:15,  3.21it/s][A 23%|██▎       | 23/99 [00:06<00:36,  2.09it/s]
+Please wait for a moment:  28%|██▊       | 19/69 [00:06<00:13,  3.67it/s][A 24%|██▍       | 24/99 [00:06<00:29,  2.56it/s]
+Please wait for a moment:  29%|██▉       | 20/69 [00:06<00:12,  4.07it/s][A 25%|██▌       | 25/99 [00:06<00:24,  3.05it/s] 26%|██▋       | 26/99 [00:06<00:20,  3.49it/s]
+Please wait for a moment:  30%|███       | 21/69 [00:06<00:11,  4.27it/s][A 27%|██▋       | 27/99 [00:06<00:18,  3.89it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:06<00:10,  4.45it/s][A 28%|██▊       | 28/99 [00:07<00:17,  4.12it/s]
+Please wait for a moment:  33%|███▎      | 23/69 [00:06<00:09,  4.70it/s][A
+Please wait for a moment:  35%|███▍      | 24/69 [00:07<00:09,  4.91it/s][A
+Please wait for a moment:  36%|███▌      | 25/69 [00:07<00:08,  5.05it/s][A
+Please wait for a moment:  38%|███▊      | 26/69 [00:07<00:08,  5.31it/s][A
+Please wait for a moment:  39%|███▉      | 27/69 [00:07<00:07,  5.37it/s][A 29%|██▉       | 29/99 [00:08<00:41,  1.69it/s]
+Please wait for a moment:  41%|████      | 28/69 [00:08<00:15,  2.70it/s][A 30%|███       | 30/99 [00:08<00:32,  2.11it/s] 31%|███▏      | 31/99 [00:08<00:25,  2.68it/s] 32%|███▏      | 32/99 [00:08<00:20,  3.23it/s] 33%|███▎      | 33/99 [00:09<00:17,  3.85it/s]
+Please wait for a moment:  42%|████▏     | 29/69 [00:09<00:18,  2.16it/s][A 34%|███▍      | 34/99 [00:09<00:15,  4.31it/s]
+Please wait for a moment:  43%|████▎     | 30/69 [00:09<00:14,  2.63it/s][A 35%|███▌      | 35/99 [00:09<00:13,  4.68it/s] 36%|███▋      | 36/99 [00:09<00:12,  4.89it/s]
+Please wait for a moment:  45%|████▍     | 31/69 [00:09<00:12,  3.06it/s][A 37%|███▋      | 37/99 [00:09<00:11,  5.29it/s] 38%|███▊      | 38/99 [00:09<00:10,  5.69it/s] 39%|███▉      | 39/99 [00:10<00:10,  5.96it/s]
+Please wait for a moment:  46%|████▋     | 32/69 [00:10<00:14,  2.49it/s][A 40%|████      | 40/99 [00:10<00:10,  5.70it/s]
+Please wait for a moment:  48%|████▊     | 33/69 [00:10<00:12,  2.98it/s][A 41%|████▏     | 41/99 [00:10<00:10,  5.71it/s]
+Please wait for a moment:  49%|████▉     | 34/69 [00:10<00:10,  3.41it/s][A
+Please wait for a moment:  51%|█████     | 35/69 [00:10<00:08,  3.91it/s][A
+Please wait for a moment:  52%|█████▏    | 36/69 [00:10<00:07,  4.35it/s][A
+Please wait for a moment:  54%|█████▎    | 37/69 [00:10<00:06,  4.75it/s][A
+Please wait for a moment:  55%|█████▌    | 38/69 [00:11<00:09,  3.28it/s][A 42%|████▏     | 42/99 [00:11<00:30,  1.89it/s]
+Please wait for a moment:  57%|█████▋    | 39/69 [00:11<00:07,  3.76it/s][A
+Please wait for a moment:  58%|█████▊    | 40/69 [00:12<00:10,  2.85it/s][A
+Please wait for a moment:  59%|█████▉    | 41/69 [00:12<00:08,  3.36it/s][A 43%|████▎     | 43/99 [00:12<00:39,  1.42it/s] 44%|████▍     | 44/99 [00:13<00:30,  1.81it/s]
+Please wait for a moment:  61%|██████    | 42/69 [00:12<00:10,  2.58it/s][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:13<00:08,  3.09it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:13<00:07,  3.56it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:13<00:05,  4.02it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:14<00:07,  3.00it/s][A 45%|████▌     | 45/99 [00:14<00:43,  1.23it/s]
+Please wait for a moment:  68%|██████▊   | 47/69 [00:15<00:13,  1.68it/s][A 46%|████▋     | 46/99 [00:15<00:47,  1.11it/s]
+Please wait for a moment:  70%|██████▉   | 48/69 [00:15<00:11,  1.76it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:16<00:11,  1.81it/s][A                                               
+Please wait for a moment:  72%|███████▏  | 50/69 [00:16<00:10,  1.83it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:17<00:09,  2.00it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:17<00:08,  1.92it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:17<00:06,  2.40it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:18<00:05,  2.90it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:18<00:04,  3.41it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:18<00:05,  2.52it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:19<00:05,  2.24it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:19<00:05,  2.14it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:20<00:04,  2.07it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:20<00:03,  2.56it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:21<00:03,  2.34it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:21<00:03,  2.01it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:22<00:02,  2.48it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:22<00:01,  2.96it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:22<00:01,  3.48it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:22<00:00,  3.86it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:22<00:00,  4.26it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:22<00:00,  4.64it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:23<00:00,  5.22it/s][A
+                                                                         [AINFO:     182.143.150.89:23917 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23917 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23918 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23917 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23918 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23917 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23919 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     182.143.150.89:23919 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 0秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23919 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23919 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23918 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23922 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 3秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23918 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23919 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23918 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23922 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23934 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23934 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23808 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23935 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23935 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23934 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23808 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23808 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 11秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23808 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 11秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23808 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23934 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23808 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23808 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 14秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23935 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23810 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23935 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 17秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23808 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 19秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23808 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23812 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23811 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23813 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23814 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23812 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23811 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23814 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23813 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 29秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23811 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 36秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23815 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 38秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23815 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 59秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23817 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23818 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23823 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23824 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23825 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23823 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23818 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23825 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23824 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23842 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23843 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23842 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23842 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 119秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23842 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23843 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23844 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 119秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23843 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23845 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23844 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23843 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23845 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23846 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 129秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23847 - "GET /api/fund/query?code=025942&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 133秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23847 - "GET /api/fund/query?code=025942&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23847 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23848 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23849 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23850 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23853 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23852 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23854 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23855 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23856 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23857 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23858 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 149秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23859 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 149秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23860 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23868 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23869 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23871 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23872 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23889 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23890 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23891 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 319秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23892 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 319秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23893 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23894 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23895 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23896 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 349秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23897 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 349秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23898 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23922 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23921 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23922 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23922 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23924 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23922 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23922 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 363秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23922 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23924 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 363秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23922 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23922 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23924 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23924 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 370秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23929 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 422秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23933 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A  1%|          | 1/99 [00:00<00:17,  5.66it/s]
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:11,  5.93it/s][A
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:11,  5.70it/s][A
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:24,  2.73it/s][A
+Please wait for a moment:   6%|▌         | 4/69 [00:01<00:18,  3.45it/s][A
+Please wait for a moment:   7%|▋         | 5/69 [00:01<00:15,  4.02it/s][A  2%|▏         | 2/99 [00:01<01:22,  1.18it/s]
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:14,  4.44it/s][A
+Please wait for a moment:  10%|█         | 7/69 [00:01<00:12,  4.84it/s][A  3%|▎         | 3/99 [00:01<00:53,  1.79it/s]
+Please wait for a moment:  12%|█▏        | 8/69 [00:01<00:12,  5.03it/s][A
+Please wait for a moment:  13%|█▎        | 9/69 [00:02<00:11,  5.19it/s][A
+Please wait for a moment:  14%|█▍        | 10/69 [00:02<00:19,  3.04it/s][A  4%|▍         | 4/99 [00:03<01:28,  1.08it/s]
+Please wait for a moment:  16%|█▌        | 11/69 [00:03<00:23,  2.51it/s][A
+Please wait for a moment:  17%|█▋        | 12/69 [00:03<00:19,  2.96it/s][A
+Please wait for a moment:  19%|█▉        | 13/69 [00:03<00:16,  3.30it/s][A
+Please wait for a moment:  20%|██        | 14/69 [00:04<00:23,  2.38it/s][A  5%|▌         | 5/99 [00:04<01:41,  1.08s/it]  6%|▌         | 6/99 [00:04<01:11,  1.30it/s]
+Please wait for a moment:  22%|██▏       | 15/69 [00:04<00:24,  2.22it/s][A
+Please wait for a moment:  23%|██▎       | 16/69 [00:05<00:26,  2.02it/s][A  7%|▋         | 7/99 [00:05<01:22,  1.11it/s]
+Please wait for a moment:  25%|██▍       | 17/69 [00:06<00:27,  1.87it/s][A
+Please wait for a moment:  26%|██▌       | 18/69 [00:06<00:28,  1.80it/s][A
+Please wait for a moment:  28%|██▊       | 19/69 [00:06<00:22,  2.25it/s][A
+Please wait for a moment:  29%|██▉       | 20/69 [00:07<00:17,  2.75it/s][A  8%|▊         | 8/99 [00:07<01:30,  1.01it/s]
+Please wait for a moment:  30%|███       | 21/69 [00:07<00:14,  3.27it/s][A  9%|▉         | 9/99 [00:07<01:06,  1.35it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:07<00:12,  3.78it/s][A 10%|█         | 10/99 [00:07<00:50,  1.77it/s]
+Please wait for a moment:  33%|███▎      | 23/69 [00:07<00:10,  4.24it/s][A 11%|█         | 11/99 [00:07<00:38,  2.27it/s]
+Please wait for a moment:  35%|███▍      | 24/69 [00:07<00:09,  4.64it/s][A
+Please wait for a moment:  36%|███▌      | 25/69 [00:07<00:08,  4.94it/s][A
+Please wait for a moment:  38%|███▊      | 26/69 [00:08<00:08,  5.02it/s][A
+Please wait for a moment:  39%|███▉      | 27/69 [00:08<00:08,  5.17it/s][A 12%|█▏        | 12/99 [00:08<00:56,  1.54it/s]
+Please wait for a moment:  41%|████      | 28/69 [00:08<00:12,  3.35it/s][A
+Please wait for a moment:  42%|████▏     | 29/69 [00:08<00:10,  3.84it/s][A
+Please wait for a moment:  43%|████▎     | 30/69 [00:09<00:09,  4.24it/s][A
+Please wait for a moment:  45%|████▍     | 31/69 [00:09<00:08,  4.52it/s][A
+Please wait for a moment:  46%|████▋     | 32/69 [00:09<00:07,  4.87it/s][A 13%|█▎        | 13/99 [00:09<01:08,  1.25it/s]
+Please wait for a moment:  48%|████▊     | 33/69 [00:09<00:10,  3.36it/s][A
+Please wait for a moment:  49%|████▉     | 34/69 [00:10<00:09,  3.85it/s][A
+Please wait for a moment:  51%|█████     | 35/69 [00:10<00:08,  4.23it/s][A
+Please wait for a moment:  52%|█████▏    | 36/69 [00:10<00:07,  4.50it/s][A
+Please wait for a moment:  54%|█████▎    | 37/69 [00:10<00:06,  4.78it/s][A
+Please wait for a moment:  55%|█████▌    | 38/69 [00:10<00:06,  5.03it/s][A
+Please wait for a moment:  57%|█████▋    | 39/69 [00:11<00:05,  5.18it/s][A 14%|█▍        | 14/99 [00:11<01:24,  1.01it/s]
+Please wait for a moment:  58%|█████▊    | 40/69 [00:11<00:05,  5.14it/s][A 15%|█▌        | 15/99 [00:11<01:03,  1.32it/s]
+Please wait for a moment:  59%|█████▉    | 41/69 [00:11<00:05,  5.13it/s][A
+Please wait for a moment:  61%|██████    | 42/69 [00:11<00:05,  5.28it/s][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:11<00:04,  5.30it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:12<00:04,  5.34it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:12<00:04,  5.44it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:12<00:04,  5.39it/s][A
+Please wait for a moment:  68%|██████▊   | 47/69 [00:12<00:04,  5.44it/s][A 16%|█▌        | 16/99 [00:12<01:12,  1.15it/s]
+Please wait for a moment:  70%|██████▉   | 48/69 [00:12<00:03,  5.56it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:12<00:03,  5.48it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:13<00:03,  5.60it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:13<00:03,  5.56it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:13<00:03,  5.61it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:13<00:02,  5.67it/s][A 17%|█▋        | 17/99 [00:13<01:18,  1.04it/s]
+Please wait for a moment:  78%|███████▊  | 54/69 [00:13<00:02,  5.65it/s][A 18%|█▊        | 18/99 [00:14<00:59,  1.36it/s]
+Please wait for a moment:  80%|███████▉  | 55/69 [00:13<00:02,  5.65it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:14<00:03,  3.37it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:14<00:03,  3.84it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:14<00:02,  4.24it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:15<00:02,  4.53it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:15<00:01,  4.86it/s][A 19%|█▉        | 19/99 [00:15<01:12,  1.10it/s]
+Please wait for a moment:  88%|████████▊ | 61/69 [00:15<00:01,  5.11it/s][A 20%|██        | 20/99 [00:15<00:54,  1.44it/s]
+Please wait for a moment:  90%|████████▉ | 62/69 [00:15<00:01,  5.14it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:15<00:01,  5.29it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:15<00:00,  5.27it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:16<00:00,  5.28it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:16<00:00,  5.36it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:16<00:00,  5.41it/s][A 21%|██        | 21/99 [00:16<01:08,  1.13it/s]
+Please wait for a moment:  99%|█████████▊| 68/69 [00:17<00:00,  3.53it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:17<00:00,  2.26it/s][A
+                                                                         [A 22%|██▏       | 22/99 [00:18<01:14,  1.03it/s] 23%|██▎       | 23/99 [00:18<00:58,  1.31it/s] 24%|██▍       | 24/99 [00:19<01:08,  1.09it/s] 25%|██▌       | 25/99 [00:20<01:16,  1.03s/it] 26%|██▋       | 26/99 [00:22<01:18,  1.07s/it] 27%|██▋       | 27/99 [00:23<01:22,  1.15s/it] 28%|██▊       | 28/99 [00:24<01:25,  1.21s/it] 29%|██▉       | 29/99 [00:26<01:26,  1.23s/it] 30%|███       | 30/99 [00:27<01:23,  1.20s/it] 31%|███▏      | 31/99 [00:28<01:20,  1.18s/it]>>> [缓存命中] 数据年龄 454秒 < 1800秒，直接返回。
+INFO:     59.83.208.105:45310 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+ 32%|███▏      | 32/99 [00:29<01:17,  1.16s/it] 33%|███▎      | 33/99 [00:30<01:19,  1.21s/it] 34%|███▍      | 34/99 [00:31<01:19,  1.23s/it] 35%|███▌      | 35/99 [00:33<01:19,  1.24s/it] 36%|███▋      | 36/99 [00:34<01:17,  1.23s/it] 37%|███▋      | 37/99 [00:35<01:13,  1.19s/it] 38%|███▊      | 38/99 [00:36<01:14,  1.23s/it] 39%|███▉      | 39/99 [00:38<01:14,  1.25s/it] 40%|████      | 40/99 [00:39<01:16,  1.30s/it] 41%|████▏     | 41/99 [00:40<01:15,  1.30s/it] 42%|████▏     | 42/99 [00:42<01:14,  1.30s/it] 43%|████▎     | 43/99 [00:43<01:10,  1.25s/it] 44%|████▍     | 44/99 [00:44<01:09,  1.27s/it] 45%|████▌     | 45/99 [00:45<01:09,  1.29s/it] 46%|████▋     | 46/99 [00:47<01:05,  1.23s/it]                                               >>> [缓存命中] 数据年龄 574秒 < 1800秒，直接返回。
+INFO:     59.83.208.103:22902 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23845 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23846 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23847 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 815秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23848 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 815秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23849 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23852 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23853 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23854 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 835秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23855 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 835秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23856 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23875 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23874 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23875 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23875 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23878 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23878 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23878 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23880 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 852秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23873 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23878 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 852秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23873 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23880 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23878 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23878 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 856秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23873 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 863秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23882 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23882 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23881 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23884 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 867秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23883 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23882 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23884 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23885 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23882 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23884 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23885 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23882 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23885 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23885 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23882 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23885 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23884 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23882 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23886 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23887 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23884 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23885 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23881 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23888 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23887 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23888 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23881 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23887 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23888 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23881 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 876秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23887 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23889 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23890 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23891 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23892 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23889 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23890 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23891 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23892 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 892秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23896 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 895秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23896 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23896 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23897 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23899 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23900 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23897 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23896 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23899 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23900 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 899秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23897 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23902 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23901 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23904 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23903 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23902 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23901 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23904 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23903 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23902 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23901 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23903 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23904 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23902 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23901 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23904 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23903 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 925秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23907 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23908 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23909 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23910 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23911 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23908 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23909 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23912 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23913 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 955秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23918 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 985秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23924 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1015秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23925 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1016秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23925 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23925 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23926 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23927 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23928 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1020秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23926 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1045秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23848 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1075秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23881 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1105秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23884 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1135秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23887 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1165秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23891 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1195秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23894 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+  0%|          | 0/99 [00:00<?, ?it/s]
+Please wait for a moment:   0%|          | 0/69 [00:00<?, ?it/s][A
+Please wait for a moment:   1%|▏         | 1/69 [00:00<00:11,  5.81it/s][A
+Please wait for a moment:   3%|▎         | 2/69 [00:00<00:11,  5.78it/s][A
+Please wait for a moment:   4%|▍         | 3/69 [00:00<00:11,  5.77it/s][A
+Please wait for a moment:   6%|▌         | 4/69 [00:00<00:11,  5.76it/s][A
+Please wait for a moment:   7%|▋         | 5/69 [00:00<00:11,  5.59it/s][A
+Please wait for a moment:   9%|▊         | 6/69 [00:01<00:11,  5.63it/s][A
+Please wait for a moment:  10%|█         | 7/69 [00:01<00:11,  5.60it/s][A  1%|          | 1/99 [00:01<02:12,  1.36s/it]
+Please wait for a moment:  12%|█▏        | 8/69 [00:01<00:10,  5.63it/s][A
+Please wait for a moment:  13%|█▎        | 9/69 [00:01<00:10,  5.71it/s][A
+Please wait for a moment:  14%|█▍        | 10/69 [00:01<00:14,  4.10it/s][A
+Please wait for a moment:  16%|█▌        | 11/69 [00:02<00:12,  4.47it/s][A
+Please wait for a moment:  17%|█▋        | 12/69 [00:02<00:11,  4.76it/s][A  2%|▏         | 2/99 [00:02<02:00,  1.25s/it]  3%|▎         | 3/99 [00:02<01:11,  1.34it/s]
+Please wait for a moment:  19%|█▉        | 13/69 [00:02<00:17,  3.22it/s][A
+Please wait for a moment:  20%|██        | 14/69 [00:03<00:14,  3.70it/s][A
+Please wait for a moment:  22%|██▏       | 15/69 [00:03<00:12,  4.18it/s][A
+Please wait for a moment:  23%|██▎       | 16/69 [00:03<00:11,  4.57it/s][A
+Please wait for a moment:  25%|██▍       | 17/69 [00:03<00:10,  4.91it/s][A  4%|▍         | 4/99 [00:04<01:33,  1.01it/s]
+Please wait for a moment:  26%|██▌       | 18/69 [00:04<00:16,  3.11it/s][A
+Please wait for a moment:  28%|██▊       | 19/69 [00:04<00:13,  3.63it/s][A
+Please wait for a moment:  29%|██▉       | 20/69 [00:04<00:12,  4.05it/s][A
+Please wait for a moment:  30%|███       | 21/69 [00:04<00:10,  4.46it/s][A  5%|▌         | 5/99 [00:05<01:37,  1.04s/it]  6%|▌         | 6/99 [00:05<01:09,  1.34it/s]
+Please wait for a moment:  32%|███▏      | 22/69 [00:05<00:15,  2.95it/s][A  7%|▋         | 7/99 [00:05<00:51,  1.80it/s]  8%|▊         | 8/99 [00:05<00:38,  2.36it/s]
+Please wait for a moment:  33%|███▎      | 23/69 [00:05<00:16,  2.81it/s][A  9%|▉         | 9/99 [00:05<00:31,  2.83it/s] 10%|█         | 10/99 [00:05<00:25,  3.50it/s] 11%|█         | 11/99 [00:06<00:21,  4.08it/s] 12%|█▏        | 12/99 [00:06<00:19,  4.51it/s]
+Please wait for a moment:  35%|███▍      | 24/69 [00:06<00:18,  2.41it/s][A 13%|█▎        | 13/99 [00:06<00:18,  4.66it/s] 14%|█▍        | 14/99 [00:06<00:16,  5.15it/s] 15%|█▌        | 15/99 [00:06<00:14,  5.64it/s]
+Please wait for a moment:  36%|███▌      | 25/69 [00:06<00:21,  2.09it/s][A 16%|█▌        | 16/99 [00:06<00:15,  5.47it/s] 17%|█▋        | 17/99 [00:07<00:14,  5.84it/s] 18%|█▊        | 18/99 [00:07<00:13,  6.02it/s]
+Please wait for a moment:  38%|███▊      | 26/69 [00:07<00:24,  1.78it/s][A
+Please wait for a moment:  39%|███▉      | 27/69 [00:08<00:23,  1.77it/s][A 19%|█▉        | 19/99 [00:08<00:36,  2.21it/s] 20%|██        | 20/99 [00:08<00:29,  2.71it/s] 21%|██        | 21/99 [00:08<00:23,  3.33it/s]
+Please wait for a moment:  41%|████      | 28/69 [00:08<00:23,  1.78it/s][A 22%|██▏       | 22/99 [00:08<00:20,  3.77it/s] 23%|██▎       | 23/99 [00:09<00:17,  4.35it/s] 24%|██▍       | 24/99 [00:09<00:15,  4.95it/s] 25%|██▌       | 25/99 [00:09<00:14,  5.03it/s]
+Please wait for a moment:  42%|████▏     | 29/69 [00:09<00:22,  1.80it/s][A 26%|██▋       | 26/99 [00:09<00:13,  5.40it/s] 27%|██▋       | 27/99 [00:09<00:13,  5.42it/s]
+Please wait for a moment:  43%|████▎     | 30/69 [00:09<00:19,  1.99it/s][A 28%|██▊       | 28/99 [00:09<00:13,  5.28it/s]
+Please wait for a moment:  45%|████▍     | 31/69 [00:09<00:15,  2.47it/s][A 29%|██▉       | 29/99 [00:10<00:12,  5.51it/s] 30%|███       | 30/99 [00:10<00:11,  5.83it/s] 31%|███▏      | 31/99 [00:10<00:10,  6.20it/s]
+Please wait for a moment:  46%|████▋     | 32/69 [00:10<00:16,  2.25it/s][A 32%|███▏      | 32/99 [00:10<00:10,  6.10it/s] 33%|███▎      | 33/99 [00:10<00:10,  6.13it/s] 34%|███▍      | 34/99 [00:10<00:10,  5.91it/s]
+Please wait for a moment:  48%|████▊     | 33/69 [00:10<00:17,  2.10it/s][A 35%|███▌      | 35/99 [00:11<00:10,  5.90it/s] 36%|███▋      | 36/99 [00:11<00:10,  5.91it/s] 37%|███▋      | 37/99 [00:11<00:09,  6.20it/s] 38%|███▊      | 38/99 [00:11<00:09,  6.11it/s] 39%|███▉      | 39/99 [00:11<00:10,  5.99it/s]
+Please wait for a moment:  49%|████▉     | 34/69 [00:11<00:19,  1.83it/s][A 40%|████      | 40/99 [00:11<00:09,  6.05it/s] 41%|████▏     | 41/99 [00:12<00:09,  6.11it/s] 42%|████▏     | 42/99 [00:12<00:09,  6.13it/s]
+Please wait for a moment:  51%|█████     | 35/69 [00:12<00:19,  1.78it/s][A 43%|████▎     | 43/99 [00:12<00:09,  5.99it/s] 44%|████▍     | 44/99 [00:12<00:08,  6.28it/s] 45%|████▌     | 45/99 [00:12<00:08,  6.54it/s] 46%|████▋     | 46/99 [00:12<00:08,  6.38it/s]                                               
+Please wait for a moment:  52%|█████▏    | 36/69 [00:12<00:19,  1.66it/s][A
+Please wait for a moment:  54%|█████▎    | 37/69 [00:13<00:22,  1.45it/s][A
+Please wait for a moment:  55%|█████▌    | 38/69 [00:14<00:16,  1.87it/s][A
+Please wait for a moment:  57%|█████▋    | 39/69 [00:14<00:12,  2.35it/s][A
+Please wait for a moment:  58%|█████▊    | 40/69 [00:14<00:13,  2.18it/s][A
+Please wait for a moment:  59%|█████▉    | 41/69 [00:15<00:14,  1.98it/s][A
+Please wait for a moment:  61%|██████    | 42/69 [00:15<00:14,  1.84it/s][A
+Please wait for a moment:  62%|██████▏   | 43/69 [00:16<00:13,  1.89it/s][A
+Please wait for a moment:  64%|██████▍   | 44/69 [00:16<00:10,  2.37it/s][A
+Please wait for a moment:  65%|██████▌   | 45/69 [00:16<00:08,  2.85it/s][A
+Please wait for a moment:  67%|██████▋   | 46/69 [00:17<00:09,  2.44it/s][A
+Please wait for a moment:  68%|██████▊   | 47/69 [00:17<00:10,  2.15it/s][A
+Please wait for a moment:  70%|██████▉   | 48/69 [00:18<00:07,  2.64it/s][A
+Please wait for a moment:  71%|███████   | 49/69 [00:18<00:08,  2.32it/s][A
+Please wait for a moment:  72%|███████▏  | 50/69 [00:18<00:06,  2.82it/s][A
+Please wait for a moment:  74%|███████▍  | 51/69 [00:19<00:07,  2.45it/s][A
+Please wait for a moment:  75%|███████▌  | 52/69 [00:19<00:07,  2.27it/s][A
+Please wait for a moment:  77%|███████▋  | 53/69 [00:20<00:05,  2.70it/s][A
+Please wait for a moment:  78%|███████▊  | 54/69 [00:20<00:04,  3.22it/s][A
+Please wait for a moment:  80%|███████▉  | 55/69 [00:20<00:03,  3.71it/s][A
+Please wait for a moment:  81%|████████  | 56/69 [00:20<00:03,  4.11it/s][A
+Please wait for a moment:  83%|████████▎ | 57/69 [00:21<00:04,  3.00it/s][A
+Please wait for a moment:  84%|████████▍ | 58/69 [00:21<00:03,  3.46it/s][A
+Please wait for a moment:  86%|████████▌ | 59/69 [00:21<00:02,  3.91it/s][A
+Please wait for a moment:  87%|████████▋ | 60/69 [00:21<00:02,  4.25it/s][A
+Please wait for a moment:  88%|████████▊ | 61/69 [00:22<00:03,  2.59it/s][A
+Please wait for a moment:  90%|████████▉ | 62/69 [00:23<00:03,  1.77it/s][A
+Please wait for a moment:  91%|█████████▏| 63/69 [00:23<00:02,  2.23it/s][A
+Please wait for a moment:  93%|█████████▎| 64/69 [00:24<00:02,  2.01it/s][A
+Please wait for a moment:  94%|█████████▍| 65/69 [00:24<00:01,  2.48it/s][A
+Please wait for a moment:  96%|█████████▌| 66/69 [00:24<00:01,  3.00it/s][A
+Please wait for a moment:  97%|█████████▋| 67/69 [00:25<00:00,  2.46it/s][A
+Please wait for a moment:  99%|█████████▊| 68/69 [00:25<00:00,  2.24it/s][A
+Please wait for a moment: 100%|██████████| 69/69 [00:26<00:00,  2.13it/s][A
+                                                                         [AINFO:     182.143.150.89:23932 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23933 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23934 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23935 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23933 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23933 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23933 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23808 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23869 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23870 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23871 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23871 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23870 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23872 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23914 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23914 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23915 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23916 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23914 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23915 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23915 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23914 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23926 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23914 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23926 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23895 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23897 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23895 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23897 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23919 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     182.143.150.89:23897 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 0秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23897 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23903 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23926 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23927 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 8秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23920 - "GET /api/fund/query?code=014064&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23920 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23903 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23927 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23926 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23808 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23935 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23809 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23810 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23808 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23935 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23809 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23810 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 36秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23935 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 41秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23935 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 71秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23822 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 78秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23824 - "GET /api/fund/query?code=012414&is_pro=true HTTP/1.1" 200 OK
+INFO:     45.156.87.70:52518 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     45.156.87.70:52524 - "GET /global/health HTTP/1.1" 404 Not Found
+>>> [缓存命中] 数据年龄 328秒 < 1800秒，直接返回。
+INFO:     180.101.244.12:43068 - "GET /api/fund/query?code=014064&is_pro=true HTTP/1.1" 200 OK
+INFO:     220.196.160.45:21992 - "GET /global/health HTTP/1.1" 404 Not Found
+>>> [缓存命中] 数据年龄 533秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23858 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23874 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23875 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23875 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23875 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23873 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23876 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23879 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23880 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23879 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23879 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23883 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 552秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23879 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23880 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 552秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23879 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 553秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23879 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 554秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23879 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 555秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 556秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 558秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 559秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 559秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 560秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 561秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 562秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 562秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 563秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23888 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 617秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23897 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 659秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23934 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 660秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23934 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 662秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23934 - "GET /api/fund/query?code=025942&is_pro=true HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23810 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23812 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23811 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23812 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 669秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23811 - "GET /api/fund/query?code=008163&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 671秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23811 - "GET /api/fund/query?code=008163&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 673秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23811 - "GET /api/fund/query?code=008163&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 883秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23915 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23827 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23828 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23829 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23830 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23862 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23862 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23864 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23863 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23864 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23862 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23864 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23862 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23865 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23862 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23865 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23862 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23862 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23867 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1045秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23867 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23865 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1045秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23867 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1046秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23867 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1048秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23867 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1050秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23867 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1053秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23867 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23869 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1058秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23869 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1072秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23880 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1087秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23883 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1092秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23889 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23889 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23889 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23894 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23895 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23896 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23894 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23889 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23896 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23895 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1281秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23861 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1282秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23861 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1283秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23861 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1307秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23873 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     182.143.150.89:23908 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23832 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23833 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23835 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23834 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23835 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23833 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23832 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23835 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 80秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23835 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 81秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23835 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23835 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23833 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23836 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23833 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23835 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23836 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23837 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 87秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23835 - "GET /api/fund/query?code=025942&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 90秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23835 - "GET /api/fund/query?code=015394&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 92秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23835 - "GET /api/fund/query?code=008163&is_pro=true HTTP/1.1" 200 OK
+INFO:     204.76.203.51:40410 - "GET http%3A//azenv.net/ HTTP/1.1" 404 Not Found
+INFO:     204.76.203.51:33094 - "CONNECT dnspod.qcloud.com%3A443 HTTP/1.1" 404 Not Found
+>>> [缓存命中] 数据年龄 353秒 < 1800秒，直接返回。
+INFO:     180.101.245.252:58760 - "GET /api/fund/query?code=025942&is_pro=true HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     47.92.231.136:55996 - "GET / HTTP/1.1" 200 OK
+INFO:     47.92.231.136:56022 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+>>> [缓存命中] 数据年龄 1736秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23916 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1778秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23815 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     182.143.150.89:23932 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23810 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23809 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23811 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23812 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23810 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23810 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23809 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23809 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23809 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23810 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23932 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 1秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23932 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23812 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 2秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23932 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23813 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23813 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 6秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23813 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23814 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 6秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23932 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23815 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23838 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23838 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23839 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23840 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23839 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23838 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23838 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23839 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23841 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23842 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23843 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23842 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23842 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23844 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23843 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 30秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23842 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 30秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23842 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 31秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23842 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23842 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 36秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23842 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 50秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23845 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 65秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23855 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 363秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23901 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23923 - "GET / HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23923 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23925 - "GET /assets/iconify-icon.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23926 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23923 - "GET /assets/echarts.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23925 - "GET /assets/Sortable.min.js HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23925 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23923 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23928 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23931 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23930 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23933 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23931 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23930 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23933 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23930 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23931 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23932 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23933 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23815 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23816 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23815 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23817 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23815 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     182.143.150.89:23815 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23816 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 0秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23815 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23815 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23817 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23816 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+INFO:     182.143.150.89:23819 - "GET /assets/fundvu.svg HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 4秒 < 1800秒，直接返回。
+INFO:     182.143.150.89:23815 - "GET /api/fund/query?code=008163&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 154秒 < 1800秒，直接返回。
+INFO:     180.101.244.14:51320 - "GET /api/fund/query?code=008163&is_pro=true HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     222.212.15.59:31384 - "GET / HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31386 - "GET /output.css HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31387 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31388 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存未命中] 获取锁成功，发起网络拉取全量估值数据...
+INFO:     222.212.15.59:31389 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 0秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31400 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 0秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31401 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31426 - "GET / HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31427 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31428 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 13秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31429 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 13秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31430 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 14秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31431 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 29秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31469 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 44秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31494 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 59秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31581 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 74秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31634 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 89秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31667 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 104秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31731 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 115秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29710 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 119秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29797 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 127秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29813 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 129秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29816 - "GET /api/fund/query?code=012414&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 131秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29819 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 134秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29830 - "GET /api/fund/query?code=025942&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 134秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29831 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 136秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29833 - "GET /api/fund/query?code=015394&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 138秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29839 - "GET /api/fund/query?code=018463&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 149秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29939 - "POST /api/fund/batch_estimation_rate HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 149秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29941 - "GET /api/fund/query?code=015839&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 154秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29973 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 160秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29981 - "GET /api/fund/query?code=025526&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 163秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29989 - "GET /api/fund/query?code=016453&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 167秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:30003 - "GET /api/fund/query?code=014064&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 180秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:30040 - "GET /api/fund/query?code=012414&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 183秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:30046 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 186秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:30048 - "GET /api/fund/query?code=025942&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 202秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:30084 - "GET /api/fund/query?code=019026&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 214秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:30181 - "GET /api/fund/query?code=020741&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 305秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:30514 - "GET /api/fund/query?code=015839&is_pro=true HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31113 - "GET /api/fund/check_auth?sync_code=AB12%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31115 - "GET /api/fund/sync_pool?sync_code=AB12%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 482秒 < 1800秒，直接返回。
+>>> [内存LRU未命中] 正在处理 420005 的静态数据...
+--- [KV持久化缓存命中] 成功读取 420005 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 420005 短效图表数据。
+>>> [内存LRU未命中] 正在处理 166007 的静态数据...
+--- [KV持久化缓存命中] 成功读取 166007 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 166007 短效图表数据。
+>>> [内存LRU未命中] 正在处理 011613 的静态数据...
+--- [KV持久化缓存命中] 成功读取 011613 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 011613 短效图表数据。
+>>> [内存LRU未命中] 正在处理 160424 的静态数据...
+--- [KV持久化缓存命中] 成功读取 160424 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 160424 短效图表数据。
+>>> [内存LRU未命中] 正在处理 007280 的静态数据...
+--- [KV持久化缓存命中] 成功读取 007280 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 007280 短效图表数据。
+>>> [内存LRU未命中] 正在处理 013403 的静态数据...
+--- [KV持久化缓存命中] 成功读取 013403 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 013403 短效图表数据。
+>>> [内存LRU未命中] 正在处理 012734 的静态数据...
+--- [KV持久化缓存命中] 成功读取 012734 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 012734 短效图表数据。
+>>> [内存LRU未命中] 正在处理 010606 的静态数据...
+--- [KV持久化缓存命中] 成功读取 010606 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 010606 短效图表数据。
+>>> [内存LRU未命中] 正在处理 018278 的静态数据...
+--- [KV持久化缓存命中] 成功读取 018278 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 018278 短效图表数据。
+INFO:     222.212.15.59:31116 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 488秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31136 - "GET /api/fund/query?code=013403&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 497秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31163 - "GET /api/fund/query?code=007280&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 508秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31193 - "GET /api/fund/query?code=160424&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 511秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31195 - "GET /api/fund/query?code=011613&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 514秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31198 - "GET /api/fund/query?code=018278&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 524秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31209 - "GET /api/fund/query?code=010606&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 525秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31210 - "GET /api/fund/query?code=012734&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 529秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31228 - "GET /api/fund/query?code=018278&is_pro=true HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 550秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31260 - "GET /api/fund/query?code=166007&is_pro=true HTTP/1.1" 200 OK
+INFO:     220.196.160.75:53744 - "GET /api/fund/check_auth?sync_code=AB12%E7%BA%A2 HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 594秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31413 - "GET /api/fund/query?code=420005&is_pro=true HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31639 - "POST /api/fund/set_password HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31687 - "GET /api/fund/check_auth?sync_code=AB12%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31690 - "GET /api/fund/sync_pool?sync_code=AB12%E7%BA%A2&password=%E7%BA%A2%E8%A4%90%E8%A4%90%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31691 - "GET /api/fund/sync_pool?sync_code=AB12%E7%BA%A2&password=%E7%BA%A2%E8%A4%90%E8%A4%90%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31692 - "GET /api/fund/sync_pool?sync_code=AB12%E7%BA%A2&password=%E7%BA%A2%E8%A4%90%E8%A4%90%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31693 - "GET /api/fund/sync_pool?sync_code=AB12%E7%BA%A2&password=%E7%BA%A2%E8%A4%90%E8%A4%90%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31694 - "GET /api/fund/sync_pool?sync_code=AB12%E7%BA%A2&password=%E7%BA%A2%E8%A4%90%E8%A4%90%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31695 - "GET /api/fund/sync_pool?sync_code=AB12%E7%BA%A2&password=%E7%BA%A2%E8%A4%90%E8%A4%90%E8%A4%90 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31721 - "GET /api/fund/sync_pool?sync_code=AB12%E7%BA%A2&password=%E8%A4%90%E7%BA%A2%E7%BA%A2%E7%BA%A2 HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 749秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31722 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 752秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:31726 - "GET /api/fund/query?code=160424&is_pro=true HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31731 - "POST /api/fund/delete_account HTTP/1.1" 200 OK
+INFO:     222.212.15.59:31734 - "GET / HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29723 - "GET /api/fund/check_auth?sync_code=XR12%E8%93%9D HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29724 - "GET /api/fund/sync_pool?sync_code=XR12%E8%93%9D&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 781秒 < 1800秒，直接返回。
+>>> [内存LRU未命中] 正在处理 014344 的静态数据...
+--- [KV持久化缓存命中] 成功读取 014344 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 014344 短效图表数据。
+INFO:     222.212.15.59:29725 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 781秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29727 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29730 - "POST /api/fund/delete_account HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29731 - "GET / HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29751 - "GET /api/fund/check_auth?sync_code=SY12%E8%93%9D HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29752 - "GET /api/fund/sync_pool?sync_code=SY12%E8%93%9D&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 807秒 < 1800秒，直接返回。
+>>> [内存LRU未命中] 正在处理 020105 的静态数据...
+--- [KV持久化缓存命中] 成功读取 020105 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 020105 短效图表数据。
+>>> [内存LRU未命中] 正在处理 011060 的静态数据...
+--- [KV持久化缓存命中] 成功读取 011060 长效数据 (基础信息+持仓)。免去网络抓取。
+--- [KV持久化缓存命中] 成功读取 011060 短效图表数据。
+INFO:     222.212.15.59:29753 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 807秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29754 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29762 - "POST /api/fund/delete_account HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29763 - "GET / HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29849 - "GET /api/fund/check_auth?sync_code=KB88%E7%BA%A2 HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29850 - "GET /api/fund/sync_pool?sync_code=KB88%E7%BA%A2&password= HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 825秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29851 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 825秒 < 1800秒，直接返回。
+INFO:     222.212.15.59:29852 - "POST /api/fund/batch_query HTTP/1.1" 200 OK
+INFO:     222.212.15.59:29884 - "POST /api/fund/sync_pool HTTP/1.1" 200 OK
+>>> [缓存命中] 数据年龄 961秒 < 1800秒，直接返回。
+INFO:     59.83.208.103:51024 - "GET /api/fund/query?code=015839&is_pro=true HTTP/1.1" 200 OK
+INFO:     129.211.167.128:59675 - "GET /api/fund/check_auth?sync_code=XR12%E8%93%9D HTTP/1.1" 200 OK

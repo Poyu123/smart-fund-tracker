@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的基金池</title>
+  <link rel="icon" href="/assets/fundvu.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/output.css">
+  
+  <link rel="preconnect" href="https://api.iconify.design" crossorigin>
+
+  <script src="/assets/iconify-icon.min.js"></script>
+  
+  <script defer src="/assets/Sortable.min.js"></script>
+  
+  <script defer src="/assets/echarts.min.js"></script>
+
+  <style>
+    /* 定义对角线裁剪路径动画 */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+
+    /* 这种特殊的 CSS 语法允许我们精确控制新旧页面的层级 */
+    ::view-transition-old(root) { z-index: 1; }
+    ::view-transition-new(root) { z-index: 999; }
+
+    /* 当 .dark-transition 类存在时执行的具体路径动画 */
+    .dark-transition::view-transition-new(root) {
+      animation: 700ms cubic-bezier(0.4, 0, 0.2, 1) both reveal-animation;
+    }
+
+    /* 关键帧：从中心扩散的圆 */
+    @keyframes reveal-animation {
+      from { clip-path: circle(0% at var(--x) var(--y)); }
+      to { clip-path: circle(150% at var(--x) var(--y)); }
+    }
+  </style>
+
+</head>
+
+<body class="bg-bg dark:bg-gray-900 min-h-screen font-sans text-neutral dark:text-gray-100 transition-colors duration-300 select-none">
+  
+  <div id="poolView" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen flex flex-col">
+    <header class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-6">
+      <div>
+        <div class="flex items-center gap-4 mb-1">
+          <img src="/assets/fundvu.svg" alt="FundVu Logo" class="w-6 h-6 sm:w-16 sm:h-16 md:w-[100px] md:h-[100px] transition-all duration-300 select-none">
+          <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-neutral dark:text-white">我的基金池</h1>
+        </div>
+        <p class="text-light dark:text-gray-400 text-sm flex items-center gap-2 mt-2">
+          实时追踪您关注的基金走势
+          <span id="currentSyncCodeDisplay" class="hidden px-3 py-1 bg-primary/10 text-primary font-bold text-xs rounded-full cursor-pointer hover:bg-primary/20 transition-colors" onclick="logoutSyncCodeWithConfirm()">当前同步码: --</span>
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <button id="themeToggleBtn" class="w-10 h-10 md:w-auto md:px-4 md:py-2.5 bg-gray-200 dark:bg-gray-800 text-neutral dark:text-gray-200 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all shadow-sm"><iconify-icon icon="fa6-solid:moon" id="themeIcon"></iconify-icon><span class="hidden md:inline" id="themeText">夜间</span></button>
+        <button id="settingsBtn" class="px-4 py-2.5 bg-gray-200 dark:bg-gray-800 text-neutral dark:text-gray-200 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all shadow-sm"><iconify-icon icon="fa6-solid:gear"></iconify-icon><span class="hidden sm:inline">设置</span></button>
+        <button id="autoUpdateToggle" class="px-4 py-2.5 bg-gray-200 dark:bg-gray-800 text-neutral dark:text-gray-200 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all shadow-sm"><iconify-icon icon="fa6-solid:rotate"></iconify-icon><span class="hidden sm:inline">更新</span></button>
+        <button id="openAddModalBtn" class="px-5 py-2.5 bg-primary text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-sm"><iconify-icon icon="fa6-solid:plus"></iconify-icon><span class="hidden sm:inline">添加</span></button>
+      </div>
+    </header>
+
+    <div id="fundGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 flex-1 content-start">
+      <div id="emptyState" class="col-span-full flex flex-col items-center justify-center py-20 text-light dark:text-gray-500">
+        <iconify-icon icon="fa6-solid:wallet" class="text-5xl mb-4 text-gray-300 dark:text-gray-700"></iconify-icon>
+        <p class="text-lg font-medium">基金池为空</p>
+        <p class="text-sm mb-4">点击右上角按钮添加第一只基金</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="detailView" class="fixed inset-0 bg-bg dark:bg-gray-900 z-40 overflow-y-auto hidden transform transition-transform duration-300 ease-in-out translate-x-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <header class="flex items-center gap-4 mb-6 sticky top-0 bg-bg dark:bg-gray-900 z-20 py-2 -mx-4 px-4 border-b border-gray-200 dark:border-gray-800">
+        <button id="backBtn" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"><iconify-icon icon="fa6-solid:arrow-left" class="text-xl text-neutral dark:text-gray-200"></iconify-icon></button>
+        <div class="flex-1 min-w-0"><h2 id="detailFundName" class="text-xl font-bold truncate text-neutral dark:text-white">--</h2><p id="detailFundCode" class="text-sm text-light dark:text-gray-400">--</p></div>
+        <div id="detailHeaderRate" class="text-2xl font-bold">--</div>
+      </header>
+      <div class="space-y-6 pb-10">
+        <section class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+          <div class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700 px-6 py-3"><h3 class="font-bold text-lg flex items-center gap-2 text-neutral dark:text-white"><iconify-icon icon="fa6-solid:circle-info" class="text-primary"></iconify-icon>基金基本概况</h3></div>
+          <div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-neutral dark:text-gray-200">
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">运作公司</span><span id="detailCompany" class="font-medium">--</span></div>
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">托管银行</span><span id="detailBank" class="font-medium">--</span></div>
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">基金评级</span><span id="detailRate" class="font-medium">--</span></div>
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">最新规模</span><span id="detailScale" class="font-medium">--</span></div>
+            
+            <div id="detailAllocationWrapper" class="col-span-1 sm:col-span-2 lg:col-span-3 border-t border-gray-100 dark:border-gray-700 pt-4 mt-2 hidden">
+              <span class="text-light dark:text-gray-400 text-sm mb-3 block">大类资产配置</span>
+              <div id="detailAllocation" class="flex flex-wrap gap-2.5">
+                </div>
+            </div>
+
+          </div>
+        </section>
+        <section class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+          <div class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700 px-6 py-3"><h3 class="font-bold text-lg flex items-center gap-2 text-neutral dark:text-white"><iconify-icon icon="fa6-solid:chart-column" class="text-primary"></iconify-icon>当日净值估算</h3></div>
+          <div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-neutral dark:text-gray-200">
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">实时估算净值</span><span id="detailValue" class="font-semibold text-xl">--</span></div>
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">估算偏差</span><span id="detailBias" class="font-semibold text-xl">--</span></div>
+            <div class="flex flex-col col-span-2"><span class="text-light dark:text-gray-400 text-sm mb-1">提示信息</span><span id="detailTip" class="font-medium text-light dark:text-gray-400">--</span></div>
+          </div>
+        </section>
+        
+        <section id="detailedMetricsSection" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hidden">
+          <div class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700 px-6 py-3"><h3 class="font-bold text-lg flex items-center gap-2 text-neutral dark:text-white"><iconify-icon icon="fa6-solid:chart-pie" class="text-primary"></iconify-icon>区间涨跌幅</h3></div>
+          <div class="p-6 grid grid-cols-3 gap-4 text-center">
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">近5日</span><span id="detail5d" class="font-bold text-xl">--</span></div>
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">近20日</span><span id="detail20d" class="font-bold text-xl">--</span></div>
+            <div class="flex flex-col"><span class="text-light dark:text-gray-400 text-sm mb-1">近60日</span><span id="detail60d" class="font-bold text-xl">--</span></div>
+          </div>
+        </section>
+
+        <section id="detailedChartSection" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden flex flex-col hidden">
+          <div class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700 px-6 py-3 flex justify-between items-center">
+            <h3 class="font-bold text-lg flex items-center gap-2 text-neutral dark:text-white"><iconify-icon icon="fa6-solid:chart-line" class="text-primary"></iconify-icon>历史走势图</h3>
+            <div class="flex bg-gray-200 dark:bg-gray-700 rounded-lg p-1 gap-1">
+               <button id="chartBtn30d" class="px-3 py-1 text-xs font-medium rounded shadow-sm bg-white dark:bg-gray-600 text-primary transition-colors">近1月</button>
+               <button id="chartBtn90d" class="px-3 py-1 text-xs font-medium rounded text-light hover:text-neutral dark:hover:text-gray-200 transition-colors">近3月</button>
+               <button id="chartBtn6mo" class="px-3 py-1 text-xs font-medium rounded text-light hover:text-neutral dark:hover:text-gray-200 transition-colors">近半年</button>
+            </div>
+          </div>
+          <div class="p-4 w-full">
+             <div id="fundTrendChart" style="width: 100%; height: 350px;"></div>
+          </div>
+        </section>
+
+        <section class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden flex flex-col h-[500px]">
+          <div class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700 px-6 py-3 flex-shrink-0"><h3 class="font-bold text-lg flex items-center gap-2 text-neutral dark:text-white"><iconify-icon icon="fa6-solid:table-list" class="text-primary"></iconify-icon>最新持仓</h3></div>
+          <div class="relative flex-1 overflow-auto scrollbar-custom">
+            <table class="table-fixed-header w-full border-collapse">
+              <thead><tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700"><th id="thRealtimeRate" class="px-4 py-3 text-left font-semibold text-sm min-w-[80px] text-neutral dark:text-gray-200">实时涨跌</th><th class="px-4 py-3 text-left font-semibold text-sm min-w-[100px] text-neutral dark:text-gray-200">资产代码</th><th class="px-4 py-3 text-left font-semibold text-sm min-w-[120px] text-neutral dark:text-gray-200">资产名称</th><th class="px-4 py-3 text-right font-semibold text-sm min-w-[100px] text-neutral dark:text-gray-200">占净值比例</th><th class="px-4 py-3 text-right font-semibold text-sm min-w-[120px] text-neutral dark:text-gray-200">持仓市值(万元)</th><th class="px-4 py-3 text-center font-semibold text-sm min-w-[80px] text-neutral dark:text-gray-200">类型</th></tr></thead>
+              <tbody id="detailHoldingsBody"><tr><td colspan="6" class="px-4 py-16 text-center text-light dark:text-gray-500">暂无数据</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="globalBackdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity opacity-0"></div>
+
+  <div id="syncModal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+    <div class="w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl m-4 border border-gray-100 dark:border-gray-700 transform transition-transform scale-95 opacity-0">
+      <div class="text-center mb-6">
+        <iconify-icon icon="fa6-solid:cloud-arrow-up" class="text-5xl text-primary mb-4"></iconify-icon>
+        <h2 class="text-2xl font-bold text-neutral dark:text-white">云端数据库连接</h2>
+        <div class="mt-2">
+          <p class="text-sm text-light dark:text-gray-400">请创建/输入您的私有专属同步码</p>
+          <p class="text-sm text-light dark:text-gray-400 mt-1">以便多设备查看您的自选基金</p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="flex justify-center items-center gap-2 sm:gap-3 mb-2">
+          <input type="text" id="syncBox1" class="sync-box w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold bg-gray-50 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-primary outline-none text-neutral dark:text-white uppercase transition-colors" maxlength="1" placeholder="A">
+          <input type="text" id="syncBox2" class="sync-box w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold bg-gray-50 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-primary outline-none text-neutral dark:text-white uppercase transition-colors" maxlength="1" placeholder="B">
+          <input type="text" id="syncBox3" class="sync-box w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold bg-gray-50 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-primary outline-none text-neutral dark:text-white transition-colors" maxlength="1" placeholder="1">
+          <input type="text" id="syncBox4" class="sync-box w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold bg-gray-50 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-primary outline-none text-neutral dark:text-white transition-colors" maxlength="1" placeholder="2">
+          <div id="syncColorWheelContainer" class="flex-shrink-0"></div>
+        </div>
+        <div id="syncError" class="text-up text-sm text-center hidden font-medium h-5"><iconify-icon icon="fa6-solid:circle-exclamation" class="mr-1"></iconify-icon><span></span></div>
+        <button id="confirmSyncBtn" class="w-full py-3.5 rounded-xl font-medium bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30 mt-2">连接云端</button>
+        <button id="skipSyncBtn" class="w-full py-3.5 rounded-xl font-medium bg-gray-100 dark:bg-gray-700 text-neutral dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">跳过，仅在本地浏览</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="passwordModal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
+    <div class="w-full max-w-sm p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl m-4 border border-gray-100 dark:border-gray-700 transform transition-transform scale-95 opacity-0">
+      <div class="text-center mb-4">
+        <iconify-icon icon="fa6-solid:lock" class="text-4xl text-primary mb-3"></iconify-icon>
+        <h2 id="pwdModalTitle" class="text-xl font-bold text-neutral dark:text-white">验证密码</h2>
+        <p class="text-sm text-light dark:text-gray-400 mt-1">上下滑动滚轮，选择4位颜色密码</p>
+      </div>
+      <div id="pwdWheelContainer"></div>
+      
+      <div id="pwdModalError" class="text-up text-sm text-center hidden font-medium h-5 mt-2"><iconify-icon icon="fa6-solid:circle-exclamation" class="mr-1"></iconify-icon><span>密码错误</span></div>
+      <button id="confirmPwdBtn" class="w-full py-3.5 mt-4 rounded-xl font-medium bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30">确认</button>
+      <div id="forgotPwdRow" class="text-center mt-4 hidden"><button id="forgotPwdBtn" class="text-sm text-primary hover:underline font-medium">忘记密码？</button></div>
+      <button id="cancelPwdBtn" class="w-full py-3 mt-3 rounded-xl font-medium bg-gray-100 dark:bg-gray-700 text-neutral dark:text-gray-300 hover:bg-gray-200 transition-colors">取消</button>
+    </div>
+  </div>
+
+  <div id="configPwdModal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
+    <div class="w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl m-4 border border-gray-100 dark:border-gray-700 overflow-y-auto max-h-[90vh] transform transition-transform scale-95 opacity-0">
+      <h2 id="configModalTitle" class="text-xl font-bold text-neutral dark:text-white mb-4 text-center">设置安全密码</h2>
+      <div id="oldPwdSection" class="mb-6 hidden">
+        <p class="text-sm font-medium text-neutral dark:text-gray-300 mb-2 text-center">验证原密码</p>
+        <div id="oldPwdWheelContainer"></div>
+      </div>
+      <div class="mb-6">
+        <p class="text-sm font-medium text-neutral dark:text-gray-300 mb-2 text-center">设置新密码 (上下滑动)</p>
+        <div id="newPwdWheelContainer"></div>
+      </div>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-neutral dark:text-gray-300 mb-1">设置密保问题 (用于找回密码)</label>
+          <input type="text" id="secQInput" placeholder="例：我最喜欢吃的水果是？" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:border-primary outline-none text-neutral dark:text-white transition-colors">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-neutral dark:text-gray-300 mb-1">密保答案</label>
+          <input type="text" id="secAInput" placeholder="请输入答案" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:border-primary outline-none text-neutral dark:text-white transition-colors">
+        </div>
+      </div>
+      <div id="configPwdError" class="text-up text-sm text-center hidden font-medium mt-4"><iconify-icon icon="fa6-solid:circle-exclamation" class="mr-1"></iconify-icon><span></span></div>
+      <div class="flex gap-3 mt-6">
+        <button id="cancelConfigBtn" class="flex-1 py-3.5 rounded-xl font-medium bg-gray-100 dark:bg-gray-700 text-neutral dark:text-gray-300 hover:bg-gray-200 transition-colors">取消</button>
+        <button id="saveConfigBtn" class="flex-1 py-3.5 rounded-xl font-medium bg-primary text-white hover:bg-primary/90 transition-colors">保存设置</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resetPwdModal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
+    <div class="w-full max-w-sm p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl m-4 border border-gray-100 dark:border-gray-700 transform transition-transform scale-95 opacity-0">
+      <h2 class="text-xl font-bold text-neutral dark:text-white mb-4 text-center">找回密码</h2>
+      <div class="mb-4">
+        <label class="block text-sm text-light dark:text-gray-400 mb-1">密保问题：</label>
+        <div id="resetSecQDisplay" class="font-bold text-lg text-primary bg-primary/5 p-3 rounded-xl">--</div>
+      </div>
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-neutral dark:text-gray-300 mb-1">请输入密保答案：</label>
+        <input type="text" id="resetSecAInput" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:border-primary outline-none text-neutral dark:text-white transition-colors">
+      </div>
+      <div class="mb-6">
+        <p class="text-sm font-medium text-neutral dark:text-gray-300 mb-2 text-center">设置新密码</p>
+        <div id="resetPwdWheelContainer"></div>
+      </div>
+      <div id="resetPwdError" class="text-up text-sm text-center hidden font-medium mt-2 mb-2"><iconify-icon icon="fa6-solid:circle-exclamation" class="mr-1"></iconify-icon><span></span></div>
+      <div class="flex gap-3 mt-4">
+        <button id="cancelResetBtn" class="flex-1 py-3 rounded-xl font-medium bg-gray-100 dark:bg-gray-700 text-neutral dark:text-gray-300 hover:bg-gray-200 transition-colors">取消</button>
+        <button id="confirmResetBtn" class="flex-1 py-3 rounded-xl font-medium bg-primary text-white hover:bg-primary/90 transition-colors">重置密码</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+    <div class="w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl m-4 border border-gray-100 dark:border-gray-700 transform transition-transform scale-95 opacity-0">
+      <h3 class="text-xl font-bold text-neutral dark:text-white mb-6">设置</h3>
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-neutral dark:text-gray-200 mb-3 flex justify-between items-center">
+          <span>实时更新频率</span>
+          <span class="text-primary font-bold bg-primary/10 px-2 py-0.5 rounded-md text-xs" id="currentIntervalDisplay">60秒</span>
+        </label>
+        <div class="flex bg-gray-100 dark:bg-gray-900 p-1.5 rounded-xl gap-1">
+          <button id="interval15s" class="setting-interval-btn flex-1 py-2.5 rounded-lg font-medium text-sm transition-all text-light dark:text-gray-400 hover:text-neutral dark:hover:text-gray-200">15秒</button>
+          <button id="interval30s" class="setting-interval-btn flex-1 py-2.5 rounded-lg font-medium text-sm transition-all text-light dark:text-gray-400 hover:text-neutral dark:hover:text-gray-200">30秒</button>
+          <button id="interval60s" class="setting-interval-btn flex-1 py-2.5 rounded-lg font-medium text-sm transition-all text-light dark:text-gray-400 hover:text-neutral dark:hover:text-gray-200">60秒</button>
+          <button id="interval120s" class="setting-interval-btn flex-1 py-2.5 rounded-lg font-medium text-sm transition-all text-light dark:text-gray-400 hover:text-neutral dark:hover:text-gray-200">120秒</button>
+        </div>
+      </div>
+      
+      <div id="cloudSecuritySection" class="mb-6 hidden">
+        <label class="block text-sm font-medium text-neutral dark:text-gray-200 mb-3">账号高级配置 (云端模式)</label>
+        <div class="grid grid-cols-2 gap-3 mb-3">
+          <button id="openConfigPwdBtn" class="py-3 rounded-xl font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-colors flex items-center justify-center gap-2"><iconify-icon icon="fa6-solid:key"></iconify-icon> 设置/修改密码</button>
+          <button id="openDeleteAccBtn" class="py-3 rounded-xl font-medium bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-200 transition-colors flex items-center justify-center gap-2"><iconify-icon icon="fa6-solid:user-xmark"></iconify-icon> 注销账号</button>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-700">
+          <span class="text-sm font-medium text-neutral dark:text-gray-200 flex items-center gap-2">
+            PRO
+            <iconify-icon icon="fa6-solid:circle-info" class="text-light hover:text-primary cursor-pointer transition-colors" id="openDetailedInfoBtn" title="点击查看说明"></iconify-icon>
+          </span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="detailedModeToggle" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+          </label>
+        </div>
+        <div id="proGuestWarning" class="hidden mt-2 text-xs text-red-500 dark:text-red-400 font-medium px-2 flex items-start gap-1.5 transition-opacity duration-300 opacity-0">
+          <iconify-icon icon="fa6-solid:lock" class="mt-0.5 shrink-0"></iconify-icon>
+          <span>PRO 模式需要调用云端算力，请连接云端数据库后启用</span>
+        </div>
+      </div>
+
+      <div class="pt-2"><button id="closeSettingsBtn" class="w-full py-3.5 rounded-xl font-medium bg-gray-200 dark:bg-gray-700 text-neutral dark:text-gray-200 hover:bg-gray-300 transition-colors">关闭</button></div>
+      <div class="mt-4 text-center text-xs text-light dark:text-gray-500">
+        v2.0 · Designed by Poter
+      </div>
+    </div>
+  </div>
+
+  <div id="detailedInfoModal" class="fixed inset-0 z-[80] flex items-center justify-center hidden">
+    <div class="w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl m-4 border border-gray-100 dark:border-gray-700 transform transition-transform scale-95 opacity-0 overflow-y-auto max-h-[90vh]">
+      <h3 class="text-lg font-bold text-neutral dark:text-white mb-4 flex items-center gap-2">
+          <iconify-icon icon="fa6-solid:crown" class="text-yellow-500"></iconify-icon> PRO 高级特性说明
+        </h3>
+        <div class="text-sm text-neutral dark:text-gray-300 space-y-4">
+          <p>开启 PRO 模式后，系统将激活深度数据解析：</p>
+
+          <div class="space-y-3">
+            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-700">
+              <h4 class="font-bold mb-1 text-neutral dark:text-gray-200 flex items-center gap-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-purple-500 border-2 border-white dark:border-gray-800"></div> 智能穿透净值估算
+              </h4>
+              <p class="text-xs text-light dark:text-gray-400">官方估值缺失时，系统会自动提取该基金的<span class="text-primary font-bold">前十大重仓股</span>，利用本地抓取的股票实时行情（A/港/美）进行<strong class="text-red-500 dark:text-red-400">反向加权推算</strong>。触发该引擎时，数值右上角将出现<strong class="text-purple-500">紫色指示点</strong>。</p>
+            </div>
+
+            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-700">
+              <h4 class="font-bold mb-1 text-neutral dark:text-gray-200 flex items-center gap-2">
+                <iconify-icon icon="fa6-solid:table-list" class="text-primary"></iconify-icon> 基金持仓涨跌追踪
+              </h4>
+              <p class="text-xs text-light dark:text-gray-400">在基金详情的“最新持仓”列表中，新增<span class="text-primary font-bold">「实时涨跌」</span>列。系统将A/港股每15分钟展示底层股票当前的涨跌幅及最新时间戳。</p>
+            </div>
+
+            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-700">
+              <h4 class="font-bold mb-2 text-neutral dark:text-gray-200 flex items-center gap-2">
+                <iconify-icon icon="fa6-solid:ellipsis" class="text-primary"></iconify-icon> 多维历史色带
+              </h4>
+              <p class="text-xs text-light dark:text-gray-400 mb-2">卡片上的三个小圆点分别代表 <strong>5日、20日、60日</strong> 的累计表现。</p>
+              
+              <div class="flex flex-col gap-1.5 mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full shrink-0" style="background-color: #99e699"></span>
+                  <span class="w-3 h-3 rounded-full shrink-0" style="background-color: #4db84d"></span>
+                  <span class="w-3 h-3 rounded-full shrink-0" style="background-color: #1a801a"></span>
+                  <span class="w-3 h-3 rounded-full shrink-0" style="background-color: #004d00"></span>
+                  <span class="text-[10px] text-light dark:text-gray-400 leading-tight">绿色系：代表下跌，颜色越深跌幅越大。</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full shrink-0" style="background-color: #ffb3b3"></span>
+                  <span class="w-3 h-3 rounded-full shrink-0" style="background-color: #ff6666"></span>
+                  <span class="w-3 h-3 rounded-full shrink-0" style="background-color: #e60000"></span>
+                  <span class="w-3 h-3 rounded-full shrink-0" style="background-color: #800000"></span>
+                  <span class="text-[10px] text-light dark:text-gray-400 leading-tight">红色系：代表上涨，颜色越深涨幅越大。</span>
+                </div>
+              </div>
+
+              <div class="text-xs text-light dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-2">
+                <span class="text-primary font-bold">智能分类详细阈值 (四级色带分界点)：</span><br>
+                <table class="w-full mt-1 text-center border-collapse border border-gray-200 dark:border-gray-700">
+                  <thead class="bg-gray-100 dark:bg-gray-800 text-neutral dark:text-gray-300">
+                    <tr>
+                      <th class="border border-gray-200 dark:border-gray-700 p-1 font-medium">类型</th>
+                      <th class="border border-gray-200 dark:border-gray-700 p-1 font-medium">5天</th>
+                      <th class="border border-gray-200 dark:border-gray-700 p-1 font-medium">20天</th>
+                      <th class="border border-gray-200 dark:border-gray-700 p-1 font-medium">60天</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="border border-gray-200 dark:border-gray-700 p-1">股基/混合</td>
+                      <td class="border border-gray-200 dark:border-gray-700 p-1">±1% / 2.5% / 4%</td>
+                      <td class="border border-gray-200 dark:border-gray-700 p-1">±3% / 6% / 10%</td>
+                      <td class="border border-gray-200 dark:border-gray-700 p-1">±5% / 10% / 18%</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-gray-200 dark:border-gray-700 p-1">债基/理财</td>
+                      <td class="border border-gray-200 dark:border-gray-700 p-1">±0.1% / 0.25% / 0.4%</td>
+                      <td class="border border-gray-200 dark:border-gray-700 p-1">±0.3% / 0.6% / 1%</td>
+                      <td class="border border-gray-200 dark:border-gray-700 p-1">±0.6% / 1.2% / 2%</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="text-[10px] opacity-80 mt-1">注：数值为绝对值。涨跌幅超过相应阈值，颜色将加深一级。</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="mt-6">
+          <button id="closeDetailedInfoBtn" class="w-full py-3 rounded-xl font-medium bg-gray-100 dark:bg-gray-700 text-neutral dark:text-gray-300 hover:bg-gray-200 transition-colors">我知道了</button>
+        </div>
+      </div>
+  </div>
+
+  <div id="addModal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+    <div class="w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl m-4 border border-gray-100 dark:border-gray-700 transform transition-transform scale-95 opacity-0">
+      <h3 class="text-lg font-bold text-neutral dark:text-white mb-4">添加基金</h3>
+      <div class="relative mb-2">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-light dark:text-gray-400"><iconify-icon icon="fa6-solid:hashtag"></iconify-icon></span>
+        <input type="text" id="modalFundInput" placeholder="请输入6位代码" maxlength="6" class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:border-primary outline-none text-lg font-medium tracking-widest text-neutral dark:text-white transition-colors">
+      </div>
+      <div id="modalError" class="text-up text-sm mb-4 h-5 hidden"><iconify-icon icon="fa6-solid:circle-exclamation" class="mr-1"></iconify-icon><span>未找到该基金</span></div>
+      <div class="flex gap-3">
+        <button id="closeModalBtn" class="flex-1 py-3 rounded-xl font-medium bg-gray-100 dark:bg-gray-700 text-neutral dark:text-gray-200 hover:bg-gray-200 transition-colors">取消</button>
+        <button id="confirmAddBtn" class="flex-1 py-3 rounded-xl font-medium bg-primary text-white hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+          <span id="modalBtnText">确认添加</span>
+          <div id="modalSpinner" class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin hidden"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE_URL = '/api/fund';
+    // const API_BASE_URL = 'http://127.0.0.1:8000/api/fund';
+
+    // ===================== 主题配置 (酷炫动画版) =====================
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    function initTheme() {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        themeIcon.setAttribute('icon', 'fa6-solid:sun');
+        themeText.textContent = '日间';
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.setAttribute('icon', 'fa6-solid:moon');
+        themeText.textContent = '夜间';
+      }
+    }
+
+    themeToggleBtn.addEventListener('click', (event) => {
+      // 1. 如果浏览器不支持新API，走老逻辑
+      if (!document.startViewTransition) {
+        performThemeToggle();
+        return;
+      }
+
+      // 2. 根据当前状态判断起点坐标
+      const isNowDark = document.documentElement.classList.contains('dark');
+      // 日切夜 (isNowDark为false): 从左上角 (0,0) 开始
+      // 夜切日 (isNowDark为true): 从右下角 (100%, 100%) 开始
+      const startX = isNowDark ? window.innerWidth : 0;
+      const startY = isNowDark ? window.innerHeight : 0;
+
+      // 3. 设置 CSS 变量并添加过渡类名
+      document.documentElement.style.setProperty('--x', startX + 'px');
+      document.documentElement.style.setProperty('--y', startY + 'px');
+      document.documentElement.classList.add('dark-transition');
+
+      // 4. 执行动画过渡
+      const transition = document.startViewTransition(() => {
+        performThemeToggle();
+      });
+
+      // 5. 动画完成后移除类名
+      transition.finished.finally(() => {
+        document.documentElement.classList.remove('dark-transition');
+      });
+    });
+
+    // 抽离出来的核心切换逻辑
+    function performThemeToggle() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      themeIcon.setAttribute('icon', isDark ? 'fa6-solid:sun' : 'fa6-solid:moon');
+      themeText.textContent = isDark ? '日间' : '夜间';
+    }
+
+    initTheme();
+
+    // ===================== 状态管理与核心开关 =====================
+    let isFirstLoad = true; // 【核心修改】新增：标识是否为页面的首次加载
+    let fundPool = [], currentViewingIndex = -1, autoUpdateInterval = null, isAutoUpdateEnabled = false, updateCycleCount = 0, updateInterval = 60000, selectedInterval = 60, sortableInstance = null;
+    let currentSyncCode = null, currentSyncPassword = localStorage.getItem('userSyncPassword') || "", isGuestMode = false, currentHasPassword = false, currentSecurityQ = "";
+    
+    let isDetailedMode = localStorage.getItem('detailedMode') === 'true';
+    document.getElementById('detailedModeToggle').checked = isDetailedMode;
+    let savedInterval = localStorage.getItem('updateInterval');
+    if (savedInterval) {
+        selectedInterval = parseInt(savedInterval);
+        updateInterval = selectedInterval * 1000;
+        document.getElementById('currentIntervalDisplay').textContent = `${selectedInterval}秒`;
+    }
+    document.getElementById('detailedModeToggle').addEventListener('change', (e) => {
+      // 【核心拦截】：如果是游客模式，展示“拨过去又弹回来”的动画后再提示
+      if (isGuestMode) {
+          if (e.target.checked) {
+              // 第一步：先不阻断，让 Tailwind 的开关开启（变蓝）动画飞一会儿（约250毫秒）
+              setTimeout(() => {
+                  
+                  // 第二步：用代码强行把开关状态改为 false，此时会触发开关关闭（变灰）的回退动画
+                  e.target.checked = false;
+                  
+                  // 第三步：再给回退动画 250 毫秒的播放时间，等彻底弹回原位后，优雅地展示红色小字
+                  setTimeout(() => {
+                      const warningEl = document.getElementById('proGuestWarning');
+                      // 移除 hidden 使其占据空间
+                      warningEl.classList.remove('hidden');
+                      // 利用 requestAnimationFrame 确保 display:block 生效后再改变透明度，触发过渡动画
+                      requestAnimationFrame(() => {
+                          warningEl.classList.remove('opacity-0');
+                      });
+                      
+                      // 第四步：展示 3.5 秒后自动淡出并隐藏，保持界面整洁
+                      setTimeout(() => {
+                          warningEl.classList.add('opacity-0');
+                          setTimeout(() => warningEl.classList.add('hidden'), 300); // 等待淡出动画播完再 hidden
+                      }, 3500);
+                      
+                  }, 250);
+                  
+              }, 250);
+          }
+          return; // 阻止后续的变量保存和网络请求逻辑
+      }
+      
+      // === 下方为正常开启的逻辑 ===
+      isDetailedMode = e.target.checked;
+      localStorage.setItem('detailedMode', isDetailedMode);
+      saveFundsToBackend();
+      batchUpdateAllFundsFull();
+    });
+
+    // 弹窗控制通用函数
+    const globalBackdrop = document.getElementById('globalBackdrop');
+    function openModalWithBackdrop(modalId) {
+      globalBackdrop.classList.remove('hidden'); requestAnimationFrame(() => globalBackdrop.classList.remove('opacity-0'));
+      const m = document.getElementById(modalId), child = m.firstElementChild;
+      m.classList.remove('hidden'); requestAnimationFrame(() => { child.classList.remove('scale-95', 'opacity-0'); });
+    }
+    function closeModalWithBackdrop(modalId) {
+      const m = document.getElementById(modalId), child = m.firstElementChild;
+      child.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => { m.classList.add('hidden'); }, 200);
+      const openModals = Array.from(document.querySelectorAll('.z-\\[60\\], .z-\\[70\\], .z-\\[80\\]')).filter(el => !el.classList.contains('hidden') && el.id !== modalId);
+      if(openModals.length === 0) {
+        globalBackdrop.classList.add('opacity-0');
+        setTimeout(() => globalBackdrop.classList.add('hidden'), 200);
+      }
+    }
+
+    // ================== 图表说明弹窗 ==================
+    document.getElementById('openDetailedInfoBtn').onclick = (e) => {
+      e.stopPropagation();
+      openModalWithBackdrop('detailedInfoModal');
+    };
+    document.getElementById('closeDetailedInfoBtn').onclick = () => {
+      closeModalWithBackdrop('detailedInfoModal');
+    };
+
+    function getDotColor(val, isBond, period) {
+        if (val === undefined || val === null) return '#86909C'; 
+        let levels;
+        if (!isBond) {
+            if (period === 5) levels = [-4.0, -2.5, -1.0, 0, 1.0, 2.5, 4.0];
+            else if (period === 20) levels = [-10.0, -6.0, -3.0, 0, 3.0, 6.0, 10.0];
+            else if (period === 60) levels = [-18.0, -10.0, -5.0, 0, 5.0, 10.0, 18.0];
+        } else {
+            if (period === 5) levels = [-0.4, -0.25, -0.1, 0, 0.1, 0.25, 0.4];
+            else if (period === 20) levels = [-1.0, -0.6, -0.3, 0, 0.3, 0.6, 1.0];
+            else if (period === 60) levels = [-2.0, -1.2, -0.6, 0, 0.6, 1.2, 2.0];
+        }
+        const colors = ['#004d00', '#1a801a', '#4db84d', '#99e699', '#ffb3b3', '#ff6666', '#e60000', '#800000'];
+        if (val <= levels[0]) return colors[0];
+        if (val <= levels[1]) return colors[1];
+        if (val <= levels[2]) return colors[2];
+        if (val <= levels[3]) return colors[3];
+        if (val <= levels[4]) return colors[4];
+        if (val <= levels[5]) return colors[5];
+        if (val <= levels[6]) return colors[6];
+        return colors[7];
+    }
+
+    const colorList = [
+      { char: '红', hex: '#F53F3F' }, { char: '橙', hex: '#FF7D00' }, { char: '黄', hex: '#FADC19' },
+      { char: '绿', hex: '#00B42A' }, { char: '青', hex: '#14C9C9' }, { char: '蓝', hex: '#165DFF' },
+      { char: '紫', hex: '#722ED1' }, { char: '黑', hex: '#1D2129' }, { char: '白', hex: '#FFFFFF' },
+      { char: '灰', hex: '#86909C' }, { char: '粉', hex: '#F76560' }, { char: '褐', hex: '#8B4513' }
+    ];
+    
+    function buildVerticalWheelHTML(idPrefix, columns=4) {
+      let html = `<div class="flex justify-center gap-2 sm:gap-3" id="${idPrefix}">`;
+      for(let i=0; i<columns; i++) {
+        html += `<div class="relative w-12 sm:w-16 h-[120px] bg-gray-50 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-inner">
+                   <div class="absolute top-[38px] left-0 right-0 h-[44px] border-y-2 border-primary pointer-events-none z-10 bg-primary/5"></div>
+                   <div class="h-full w-full overflow-y-scroll snap-y snap-mandatory scrollbar-hide relative z-0 color-slot" data-dir="y" style="-webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
+                      <div class="h-[40px] flex-shrink-0" style="scroll-snap-align: center; scroll-snap-stop: always;"></div>
+                      ${colorList.map(c => `<div class="h-[40px] flex-shrink-0 snap-center flex items-center justify-center" style="scroll-snap-stop: always;"><div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-gray-300 shadow-sm" style="background-color: ${c.hex}" title="${c.char}"></div></div>`).join('')}
+                      <div class="h-[40px] flex-shrink-0" style="scroll-snap-align: center; scroll-snap-stop: always;"></div>
+                   </div>
+                </div>`;
+      }
+      return html + `</div>`;
+    }
+
+    function buildHorizontalWheelHTML(idPrefix) {
+      return `<div class="flex justify-center items-center" id="${idPrefix}">
+                <div class="relative w-20 sm:w-24 h-14 sm:h-16 bg-gray-50 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-inner flex items-center transition-colors">
+                   <div class="absolute top-0 bottom-0 left-[50%] w-[40px] -translate-x-1/2 pointer-events-none z-10 bg-primary/10"></div>
+                   <div class="h-full w-full overflow-x-scroll flex flex-row snap-x snap-mandatory scrollbar-hide relative z-0 color-slot" data-dir="x" style="-webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
+                      <div class="w-[calc(50%-20px)] h-full flex-shrink-0" style="scroll-snap-align: center; scroll-snap-stop: always;"></div>
+                      ${colorList.map(c => `<div class="w-[40px] h-full flex-shrink-0 snap-center flex items-center justify-center" style="scroll-snap-stop: always;"><div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-gray-300 shadow-sm flex-shrink-0" style="background-color: ${c.hex}" title="${c.char}"></div></div>`).join('')}
+                      <div class="w-[calc(50%-20px)] h-full flex-shrink-0" style="scroll-snap-align: center; scroll-snap-stop: always;"></div>
+                   </div>
+                </div>
+              </div>`;
+    }
+    
+    function getWheelValue(idPrefix) {
+      const slots = document.querySelectorAll(`#${idPrefix} .color-slot`);
+      let pwd = "";
+      slots.forEach(slot => {
+        const isX = slot.getAttribute('data-dir') === 'x';
+        const scrollPos = isX ? slot.scrollLeft : slot.scrollTop;
+        const idx = Math.max(0, Math.min(colorList.length - 1, Math.round(scrollPos / 40)));
+        pwd += colorList[idx].char;
+      });
+      return pwd;
+    }
+    
+    ['pwdWheelContainer', 'oldPwdWheelContainer', 'newPwdWheelContainer', 'resetPwdWheelContainer'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.innerHTML = buildVerticalWheelHTML(id.replace('Container', 'Group'), 4);
+    });
+    const syncWheel = document.getElementById('syncColorWheelContainer');
+    if(syncWheel) syncWheel.innerHTML = buildHorizontalWheelHTML('syncColorWheelGroup');
+
+    const syncModal = document.getElementById('syncModal');
+    const syncBoxes = [document.getElementById('syncBox1'), document.getElementById('syncBox2'), document.getElementById('syncBox3'), document.getElementById('syncBox4')];
+    syncBoxes.forEach((box, index) => {
+      box.addEventListener('input', (e) => {
+        let val = e.target.value;
+        if (index < 2) val = val.replace(/[^a-zA-Z]/g, '').toUpperCase(); else val = val.replace(/[^0-9]/g, ''); 
+        e.target.value = val;
+        if (val && index < 3) syncBoxes[index + 1].focus();
+      });
+      box.addEventListener('keydown', (e) => { if (e.key === 'Backspace' && !e.target.value && index > 0) syncBoxes[index - 1].focus(); });
+    });
+
+    document.getElementById('confirmSyncBtn').addEventListener('click', async () => {
+      const selectedColorChar = getWheelValue('syncColorWheelGroup'); 
+      const fullCode = (syncBoxes[0].value + syncBoxes[1].value + syncBoxes[2].value + syncBoxes[3].value + selectedColorChar).toUpperCase();
+      if (!/^[A-Z]{2}\d{2}[红橙黄绿青蓝紫黑白灰粉褐]$/.test(fullCode)) { document.getElementById('syncError').querySelector('span').textContent = '格式不正确，请填写4位字符并滑动选择颜色'; document.getElementById('syncError').classList.remove('hidden'); return; }
+      document.getElementById('syncError').classList.add('hidden');
+      localStorage.setItem('userSyncCode', fullCode);
+      checkAndInitSyncCode();
+    });
+
+    document.getElementById('skipSyncBtn').addEventListener('click', () => {
+      isGuestMode = true; currentSyncCode = null; closeModalWithBackdrop('syncModal');
+      const disp = document.getElementById('currentSyncCodeDisplay'); disp.textContent = '本地模式'; disp.classList.remove('hidden');
+      loadFundsFromLocalStorage();
+    });
+
+    function logoutSyncCodeWithConfirm() {
+      if(confirm(currentSyncCode ? `确定退出当前同步码 ${currentSyncCode} 吗？` : `确定退出本地模式吗？`)) forceLogout();
+    }
+    
+    function forceLogout() {
+      localStorage.removeItem('userSyncCode'); localStorage.removeItem('userSyncPassword');
+      currentSyncCode = null; currentSyncPassword = ""; isGuestMode = false; fundPool = []; renderPool();
+      checkAndInitSyncCode();
+    }
+
+    async function checkAndInitSyncCode() {
+      const localSync = localStorage.getItem('userSyncCode');
+      if (!localSync) { openModalWithBackdrop('syncModal'); document.getElementById('currentSyncCodeDisplay').classList.add('hidden'); return; }
+      
+      currentSyncCode = localSync; isGuestMode = false; closeModalWithBackdrop('syncModal');
+      document.getElementById('currentSyncCodeDisplay').textContent = `同步码: ${currentSyncCode}`; document.getElementById('currentSyncCodeDisplay').classList.remove('hidden');
+      
+      try {
+        const res = await fetch(`${API_BASE_URL}/check_auth?sync_code=${currentSyncCode}`);
+        const result = await res.json();
+        currentHasPassword = result.has_password;
+        currentSecurityQ = result.security_q;
+
+        if (currentHasPassword) {
+          if (currentSyncPassword) loadFundsFromBackend();
+          else promptLoginPassword();
+        } else {
+          loadFundsFromBackend();
+        }
+      } catch (e) { loadFundsFromBackend(); }
+    }
+
+    let pwdCallback = null;
+    function promptLoginPassword() {
+      document.getElementById('pwdModalTitle').textContent = "验证密码";
+      document.getElementById('forgotPwdRow').classList.remove('hidden');
+      
+      document.getElementById('cancelPwdBtn').onclick = () => { 
+        closeModalWithBackdrop('passwordModal'); 
+        document.getElementById('pwdModalError').classList.add('hidden');
+        forceLogout(); 
+      };
+      
+      pwdCallback = async (pwd) => {
+        currentSyncPassword = pwd;
+        const res = await loadFundsFromBackend();
+        if(res) {
+          localStorage.setItem('userSyncPassword', pwd);
+          closeModalWithBackdrop('passwordModal');
+        } else {
+          document.getElementById('pwdModalError').classList.remove('hidden');
+        }
+      };
+      openModalWithBackdrop('passwordModal');
+    }
+
+    document.getElementById('confirmPwdBtn').onclick = () => {
+      document.getElementById('pwdModalError').classList.add('hidden');
+      pwdCallback(getWheelValue('pwdWheelGroup'));
+    };
+
+    async function loadFundsFromBackend() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/sync_pool?sync_code=${currentSyncCode}&password=${currentSyncPassword}`);
+        const result = await response.json();
+        if(!result.success) return false;
+
+        if (result.settings) {
+            if (result.settings.detailedMode !== undefined) {
+                isDetailedMode = result.settings.detailedMode;
+                document.getElementById('detailedModeToggle').checked = isDetailedMode;
+                localStorage.setItem('detailedMode', isDetailedMode);
+            }
+            if (result.settings.interval !== undefined) {
+                selectedInterval = result.settings.interval;
+                updateInterval = selectedInterval * 1000;
+                document.getElementById('currentIntervalDisplay').textContent = `${selectedInterval}秒`;
+                localStorage.setItem('updateInterval', selectedInterval);
+            }
+        }
+
+        if (result.data && result.data.length > 0) {
+          fundPool = result.data.map(code => ({ code: code, data: { basic_info: {}, estimation_info: {}, holdings_data: [], detailed_info: null }, timestamp: 0 }));
+          renderPool(); 
+          batchUpdateAllFundsFull(); 
+        } else { fundPool = []; renderPool(); }
+        return true;
+      } catch (e) { fundPool = []; renderPool(); return true; }
+    }
+
+    async function loadFundsFromLocalStorage() {
+      const storedCodes = localStorage.getItem('myFundCodes');
+      if (storedCodes) {
+        try {
+          const codes = JSON.parse(storedCodes);
+          if (codes && codes.length > 0) {
+            fundPool = codes.map(code => ({ code: code, data: { basic_info: {}, estimation_info: {}, holdings_data: [], detailed_info: null }, timestamp: 0 }));
+            renderPool(); batchUpdateAllFundsFull(); return;
+          }
+        } catch (e) {}
+      }
+      fundPool = []; renderPool();
+    }
+
+    async function saveFundsToBackend() {
+      const codes = fundPool.map(f => f.code);
+      const currentSettings = { interval: selectedInterval, detailedMode: isDetailedMode }; // 【新增】打包当前设置
+      if (currentSyncCode) {
+        try { 
+          // 【修改】请求体中加入 settings 属性
+          await fetch(`${API_BASE_URL}/sync_pool`, { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({ sync_code: currentSyncCode, password: currentSyncPassword, codes: codes, settings: currentSettings }) 
+          });
+        } catch(e) {}
+      } else if (isGuestMode) { 
+        localStorage.setItem('myFundCodes', JSON.stringify(codes)); 
+      }
+    }
+
+    document.getElementById('settingsBtn').onclick = () => {
+      document.getElementById('cloudSecuritySection').classList.toggle('hidden', isGuestMode);
+      const buttons = document.querySelectorAll('.setting-interval-btn');
+      buttons.forEach(btn => { btn.className = 'setting-interval-btn flex-1 py-2.5 rounded-lg font-medium text-sm transition-all text-light dark:text-gray-400 hover:text-neutral dark:hover:text-gray-200'; });
+      const activeBtn = document.getElementById(`interval${selectedInterval}s`);
+      if (activeBtn) activeBtn.className = 'setting-interval-btn flex-1 py-2.5 rounded-lg font-medium text-sm transition-all bg-white dark:bg-gray-700 text-primary shadow-sm';
+      openModalWithBackdrop('settingsModal');
+    };
+    document.getElementById('closeSettingsBtn').onclick = () => closeModalWithBackdrop('settingsModal');
+
+    document.getElementById('openConfigPwdBtn').onclick = () => {
+      closeModalWithBackdrop('settingsModal');
+      document.getElementById('oldPwdSection').classList.toggle('hidden', !currentHasPassword);
+      document.getElementById('configPwdError').classList.add('hidden');
+      openModalWithBackdrop('configPwdModal');
+    };
+    document.getElementById('cancelConfigBtn').onclick = () => closeModalWithBackdrop('configPwdModal');
+    document.getElementById('saveConfigBtn').onclick = async () => {
+      const oldPwd = currentHasPassword ? getWheelValue('oldPwdWheelGroup') : "";
+      const newPwd = getWheelValue('newPwdWheelGroup');
+      const q = document.getElementById('secQInput').value.trim();
+      const a = document.getElementById('secAInput').value.trim();
+      if(!q || !a) { document.getElementById('configPwdError').querySelector('span').textContent="请输入密保问题和答案"; document.getElementById('configPwdError').classList.remove('hidden'); return; }
+      
+      const res = await fetch(`${API_BASE_URL}/set_password`, { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({sync_code: currentSyncCode, old_password: oldPwd, new_password: newPwd, security_q: q, security_a: a}) });
+      const data = await res.json();
+      if(data.success) {
+        alert("设置成功！"); currentHasPassword = true; currentSyncPassword = newPwd; localStorage.setItem('userSyncPassword', newPwd); currentSecurityQ = q;
+        closeModalWithBackdrop('configPwdModal');
+      } else {
+        document.getElementById('configPwdError').querySelector('span').textContent = data.error; document.getElementById('configPwdError').classList.remove('hidden');
+      }
+    };
+
+    document.getElementById('forgotPwdBtn').onclick = () => {
+      closeModalWithBackdrop('passwordModal');
+      document.getElementById('resetSecQDisplay').textContent = currentSecurityQ || "该账号未设置密保";
+      document.getElementById('resetPwdError').classList.add('hidden');
+      openModalWithBackdrop('resetPwdModal');
+    };
+    document.getElementById('cancelResetBtn').onclick = () => { closeModalWithBackdrop('resetPwdModal'); openModalWithBackdrop('passwordModal'); };
+    document.getElementById('confirmResetBtn').onclick = async () => {
+      const a = document.getElementById('resetSecAInput').value.trim();
+      const newPwd = getWheelValue('resetPwdWheelGroup');
+      const res = await fetch(`${API_BASE_URL}/reset_password`, { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({sync_code: currentSyncCode, security_a: a, new_password: newPwd}) });
+      const data = await res.json();
+      if(data.success) {
+        alert("重置成功，请重新登录！"); closeModalWithBackdrop('resetPwdModal'); promptLoginPassword();
+      } else {
+        document.getElementById('resetPwdError').querySelector('span').textContent = data.error; document.getElementById('resetPwdError').classList.remove('hidden');
+      }
+    };
+
+    document.getElementById('openDeleteAccBtn').onclick = () => {
+      closeModalWithBackdrop('settingsModal');
+      if(currentHasPassword) {
+        document.getElementById('pwdModalTitle').textContent = "验证注销密码";
+        document.getElementById('forgotPwdRow').classList.add('hidden');
+        
+        document.getElementById('cancelPwdBtn').onclick = () => { 
+          closeModalWithBackdrop('passwordModal'); 
+          document.getElementById('pwdModalError').classList.add('hidden');
+        };
+
+        pwdCallback = async (pwd) => {
+          const res = await fetch(`${API_BASE_URL}/delete_account`, { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({sync_code: currentSyncCode, password: pwd}) });
+          const data = await res.json();
+          if(data.success) {
+            alert("注销成功！"); closeModalWithBackdrop('passwordModal');
+            localStorage.removeItem('userSyncCode'); localStorage.removeItem('userSyncPassword'); window.location.reload();
+          } else { document.getElementById('pwdModalError').querySelector('span').textContent = data.error; document.getElementById('pwdModalError').classList.remove('hidden'); }
+        };
+        openModalWithBackdrop('passwordModal');
+      } else {
+        if(confirm("由于没有设置密码，确认直接注销该同步码吗？所有数据将永久删除！")) {
+          fetch(`${API_BASE_URL}/delete_account`, { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({sync_code: currentSyncCode, password: ""}) })
+          .then(r => r.json()).then(d => { if(d.success) { localStorage.removeItem('userSyncCode'); window.location.reload(); } });
+        }
+      }
+    };
+
+    const fundGrid = document.getElementById('fundGrid'), emptyState = document.getElementById('emptyState');
+    
+    // 【新增】拖拽状态全局锁，防止页面重绘打断拖拽
+    let isDragging = false; 
+
+    function initSortable() {
+      if (typeof Sortable === 'undefined') return;
+      if (sortableInstance) return;
+      sortableInstance = new Sortable(fundGrid, {
+        animation: 150, draggable: '.fund-card', ghostClass: 'sortable-ghost',
+        delay: 200, delayOnTouchOnly: true, touchStartThreshold: 5, forceFallback: true, fallbackTolerance: 5, filter: '.delete-btn',
+        onStart: function () { 
+          isDragging = true; // 【新增】手指/鼠标按下开始拖拽时，上锁
+        }, 
+        onEnd: function (evt) {
+          isDragging = false; // 【新增】拖拽结束，解锁
+          const oldIndex = evt.oldDraggableIndex, newIndex = evt.newDraggableIndex;
+          if (oldIndex !== undefined && newIndex !== undefined && oldIndex !== newIndex) {
+            const movedItem = fundPool.splice(oldIndex, 1)[0]; fundPool.splice(newIndex, 0, movedItem); saveFundsToBackend(); 
+          }
+        }
+      });
+    }
+
+    function renderPool() {
+      fundGrid.querySelectorAll('.fund-card').forEach(c => c.remove());
+      if (fundPool.length === 0) { emptyState.classList.remove('hidden'); return; }
+      emptyState.classList.add('hidden'); fundPool.forEach((fund) => fundGrid.appendChild(createFundCard(fund))); initSortable();
+    }
+
+    function createFundCard(fund) {
+      const { basic_info, estimation_info, detailed_info } = fund.data, name = basic_info && basic_info['基金名称'] ? basic_info['基金名称'] : '加载中...', code = fund.code;
+      const estRate = estimation_info ? estimation_info['估算日增长率'] : undefined; let rateNum = 0, rateText = '--', colorClass = 'text-neutral dark:text-gray-300 bg-gray-100 dark:bg-gray-700';
+      if (estRate && estRate !== '暂无' && estRate.includes('%')) { rateText = estRate; rateNum = parseFloat(estRate.replace('%', '')); if (rateNum > 0) colorClass = 'text-up bg-up/5 dark:bg-up/10'; else if (rateNum < 0) colorClass = 'text-down bg-down/5 dark:bg-down/10'; }
+      
+      let dotsHtml = '';
+      if(!isGuestMode && isDetailedMode && detailed_info) {
+          const type = basic_info['基金类型'] || '';
+          const isBond = type.includes('债') || type.includes('理财');
+          const c5 = getDotColor(detailed_info.return_5d, isBond, 5);
+          const c20 = getDotColor(detailed_info.return_20d, isBond, 20);
+          const c60 = getDotColor(detailed_info.return_60d, isBond, 60);
+          dotsHtml = `<div class="flex gap-[3px] justify-center mt-1">
+                        <div class="w-1.5 h-1.5 rounded-full" style="background-color: ${c5}" title="5日: ${detailed_info.return_5d}%"></div>
+                        <div class="w-1.5 h-1.5 rounded-full" style="background-color: ${c20}" title="20日: ${detailed_info.return_20d}%"></div>
+                        <div class="w-1.5 h-1.5 rounded-full" style="background-color: ${c60}" title="60日: ${detailed_info.return_60d}%"></div>
+                      </div>`;
+      }
+
+      // 【核心修改】：判定并生成紫色小点
+      const estTip = estimation_info ? (estimation_info['提示'] || '') : '';
+      const isSelfEstimated = estTip.includes('重仓股反向估算');
+      // 1. 改为 -top-1 -right-1，让它精确悬浮在数字框边缘
+      // 2. 加上 border-2 增加视觉上的镂空层次感
+      // 3. 加上 pointer-events-auto 确保鼠标悬停能看到 Tooltip 提示
+      const purpleDotHtml = isSelfEstimated 
+          ? `<div class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-purple-500 border-2 border-white dark:border-gray-800 pointer-events-auto shadow-sm" title="${estTip}"></div>` 
+          : '';
+
+      const div = document.createElement('div'); div.className = 'fund-card bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 cursor-pointer hover:shadow-md hover:border-primary/30 dark:hover:border-primary/50 transition-all flex justify-between items-center group relative';
+      
+      // 核心改动：把 purpleDotHtml 移到了 ${rateText} 的旁边，并给这个数字框加上了 relative。
+      // 同时去掉了右侧区域的 pointer-events-none，使得它和底下3个小圆点的 Tooltip 都能正常生效！
+     // 【核心修改】：将 top-2 right-2 改为 bottom-3 right-3 (留出一点边距更好看)
+      div.innerHTML = `<div class="min-w-0 pointer-events-none"><div class="flex items-center gap-2 mb-1"><h3 class="font-bold text-lg truncate text-neutral dark:text-white">${name}</h3></div><p class="text-sm text-light dark:text-gray-400 font-mono">${code}</p></div><div class="flex-shrink-0 ml-4"><div class="relative px-3 py-1.5 rounded-lg font-bold ${colorClass}">${rateText}${purpleDotHtml}</div>${dotsHtml}</div><button class="delete-btn absolute bottom-3 right-3 w-8 h-8 rounded-full bg-red-100 dark:bg-red-500/20 text-red-500 hover:bg-red-200 dark:hover:bg-red-500/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><iconify-icon icon="fa6-solid:trash" class="text-xs"></iconify-icon></button>`;
+      
+      div.querySelector('.delete-btn').onclick = (e) => { e.stopPropagation(); if (confirm(`确定要删除 ${name} (${code}) 吗？`)) { const idx = fundPool.findIndex(f => f.code === code); if (idx > -1) { fundPool.splice(idx, 1); saveFundsToBackend(); renderPool(); } } };
+      div.onclick = async () => {
+        if (fund.data && fund.data.basic_info && fund.data.basic_info['基金名称']) { 
+          const idx = fundPool.findIndex(f => f.code === code); 
+          if (idx > -1) { 
+            // 1. 先用本地缓存的旧数据秒开弹窗，保证极致流畅度
+            openDetail(idx); 
+            
+            // 2. 触发专属网络请求，获取这只基金当前最新的穿透股票涨跌幅
+            try {
+              // 【核心修改】点击卡片时，也需向后端报告当前的 PRO 模式状态
+              const reqIsPro = (!isGuestMode && isDetailedMode);
+              const res = await fetch(`${API_BASE_URL}/query?code=${code}&is_pro=${reqIsPro}`);
+              const result = await res.json();
+              if (result.success) {
+                // 更新本地内存池
+                fundPool[idx].data = result.data;
+                // 3. 如果网络请求回来时，用户依然停留在当前这只基金的详情页，则无感刷新数据渲染
+                if (currentViewingIndex === idx) {
+                  renderDetailData(result.data);
+                }
+              }
+            } catch(e) {
+              console.warn("详情页静默刷新失败", e);
+            }
+          } 
+        } 
+      };
+      return div;
+    }
+
+    async function updateAllFunds() { 
+      if (fundPool.length === 0) return; 
+
+      // 1. 数据刷新前：点亮呼吸灯
+      const btn = document.getElementById('autoUpdateToggle');
+      if (isAutoUpdateEnabled) btn.classList.add('animate-pulse');
+
+      // 执行网络请求
+      if (updateCycleCount % 88 === 0) await batchUpdateAllFundsFull(); 
+      else await batchUpdateEstimationRates(); 
+
+      // 2. 数据刷新后：熄灭呼吸灯
+      if (isAutoUpdateEnabled) btn.classList.remove('animate-pulse');
+      
+      updateCycleCount++; 
+    }
+
+    async function batchUpdateAllFundsFull() { 
+      if (fundPool.length === 0) return; 
+      try { 
+        // 【核心修改】首次加载时，强制关闭 PRO 计算以实现基础界面秒开；后续根据开关状态决定
+        const requestIsPro = isFirstLoad ? false : (!isGuestMode && isDetailedMode);
+
+        const res = await fetch(`${API_BASE_URL}/batch_query`, { 
+          method: 'POST', 
+          headers: { 'Content-Type': 'application/json' }, 
+          body: JSON.stringify({ codes: fundPool.map(f => f.code), ttl: selectedInterval, is_pro: requestIsPro }) 
+        }); 
+        const result = await res.json(); 
+        if (result.success) { 
+          result.data.forEach((fundData) => { 
+            if (fundData.success) { 
+              const targetFund = fundPool.find(f => f.code === fundData.code);
+              if (targetFund) {
+                targetFund.data = fundData.data; 
+                targetFund.timestamp = Date.now(); 
+              }
+            } 
+          }); 
+          if (!isDragging) renderPool(); 
+          if (currentViewingIndex !== -1) renderDetailData(fundPool[currentViewingIndex].data); 
+
+          // 【核心修改】实现分步渲染：首次基础界面渲染完后，如果 PRO 模式处于开启状态，立刻静默补发一次全量请求拉取估值兜底
+          if (isFirstLoad) {
+              isFirstLoad = false;
+              if (!isGuestMode && isDetailedMode) {
+                  batchUpdateAllFundsFull(); // 第二重请求
+              }
+          }
+        } 
+      } catch (e) {} 
+    }
+
+    async function batchUpdateEstimationRates() { 
+      if (fundPool.length === 0) return; 
+      try { 
+        const res = await fetch(`${API_BASE_URL}/batch_estimation_rate`, { 
+          method: 'POST', 
+          headers: { 'Content-Type': 'application/json' }, 
+          // 【核心修改】将当前的 PRO 状态传给后端。关闭时传 false，后端直接跳过估算逻辑不返回任何推算数据
+          body: JSON.stringify({ codes: fundPool.map(f => f.code), ttl: selectedInterval, is_pro: (!isGuestMode && isDetailedMode) }) 
+        }); 
+        const result = await res.json(); 
+        if (result.success) { 
+          result.data.forEach((rateInfo) => { 
+            const targetFund = fundPool.find(f => f.code === rateInfo.code);
+            // 【核心修复】：移除 "rateInfo.estimation_rate !== '未找到'" 的阻挡！
+            // 只要后端返回了状态，不管有没有估值，都必须无条件暴力覆盖前端，彻底抹除幽灵缓存！
+            if (targetFund) { 
+              targetFund.data.estimation_info['估算日增长率'] = rateInfo.estimation_rate; 
+              targetFund.data.estimation_info['实时估算净值'] = rateInfo.estimation_value;
+              targetFund.data.estimation_info['估算偏差'] = rateInfo.estimation_bias;
+              targetFund.data.estimation_info['提示'] = rateInfo.tip || '';
+              
+              targetFund.timestamp = Date.now(); 
+            } 
+          }); 
+          if (!isDragging) renderPool();
+          if (currentViewingIndex !== -1) renderDetailData(fundPool[currentViewingIndex].data); 
+        } 
+      } catch (e) {} 
+    }
+    
+    // 详情页图表逻辑
+    let detailChartInstance = null;
+    
+    window.addEventListener('resize', () => {
+        if (detailChartInstance) detailChartInstance.resize();
+    });
+
+    function boxplotCalc(dataArr) {
+        if(!dataArr || dataArr.length === 0) return [0,0,0,0,0];
+        let arr = [...dataArr].sort((a,b)=>a-b);
+        let min = arr[0], max = arr[arr.length-1];
+        let q1 = arr[Math.floor((arr.length-1)*0.25)];
+        let med = arr[Math.floor((arr.length-1)*0.5)];
+        let q3 = arr[Math.floor((arr.length-1)*0.75)];
+        return [min, q1, med, q3, max];
+    }
+    
+    function renderFundChart(type, dInfo) {
+      if(!dInfo) return;
+      if(!detailChartInstance) detailChartInstance = echarts.init(document.getElementById('fundTrendChart'));
+      
+      let option = {
+          tooltip: { trigger: 'axis' },
+          grid: { left: '3%', right: '4%', bottom: '10%', top: '15%', containLabel: true },
+          xAxis: { type: 'category', data: [], axisLabel:{color:'#86909C'} },
+          yAxis: { type: 'value', axisLabel: { formatter: '{value}%', color:'#86909C' }, splitLine:{lineStyle:{color:'#F2F3F5', type:'dashed'}} },
+          series: []
+      };
+
+      if (type === '30d' || type === '90d') {
+          const data = type === '30d' ? dInfo.trend_30d : dInfo.trend_90d;
+          option.xAxis.data = data.dates;
+          option.tooltip.formatter = '{b}<br/><span style="color:#165DFF">●</span> 收益率: <b>{c}%</b>';
+          option.series = [{
+              data: data.returns, type: 'line', smooth: true, itemStyle: { color: '#165DFF' },
+              areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(22,93,255,0.3)'}, {offset: 1, color: 'rgba(22,93,255,0)'}]) }
+          }];
+      } else if (type === '6mo') {
+          const months = dInfo.trend_6mo.map(m => m.month);
+          const boxData = dInfo.trend_6mo.map(m => boxplotCalc(m.rates));
+          const meanData = dInfo.trend_6mo.map(m => m.mean);
+          option.xAxis.data = months;
+          option.tooltip.formatter = function(params) {
+              if (params[0].seriesType === 'boxplot') {
+                  return `${params[0].name}<br/>最大值: ${params[0].data[5]}%<br/>Q3: ${params[0].data[4]}%<br/>中位数: ${params[0].data[3]}%<br/>Q1: ${params[0].data[2]}%<br/>最小值: ${params[0].data[1]}%`;
+              }
+              return `${params[0].name}<br/>均值: ${params[0].data}%`;
+          };
+          option.series = [
+              { name: '分布', type: 'boxplot', data: boxData, itemStyle: { color: '#165DFF', borderColor: '#165DFF' } },
+              { name: '均值', type: 'line', data: meanData, smooth: true, itemStyle: { color: '#F53F3F' } }
+          ];
+      }
+      detailChartInstance.setOption(option, true);
+    }
+
+    const detailView = document.getElementById('detailView');
+    
+    function openDetail(index) { 
+      currentViewingIndex = index; 
+      renderDetailData(fundPool[index].data); 
+      detailView.classList.remove('hidden'); 
+      requestAnimationFrame(() => detailView.classList.remove('translate-x-full')); 
+      
+      setTimeout(() => {
+          if (detailChartInstance) {
+              detailChartInstance.resize();
+          }
+      }, 350);
+    }
+    
+    document.getElementById('backBtn').onclick = () => { detailView.classList.add('translate-x-full'); setTimeout(() => { detailView.classList.add('hidden'); currentViewingIndex = -1; }, 300); };
+    
+    function renderDetailData(result) {
+      const { basic_info, estimation_info, holdings_data, detailed_info } = result;
+      document.getElementById('detailFundName').textContent = basic_info['基金名称'] || '--'; document.getElementById('detailFundCode').textContent = fundPool[currentViewingIndex]?.code || '';
+      const estRate = estimation_info['估算日增长率'], hr = document.getElementById('detailHeaderRate');
+      if (estRate && estRate !== '暂无' && estRate.includes('%')) { hr.textContent = estRate; const num = parseFloat(estRate.replace('%', '')); hr.className = 'text-2xl font-bold ' + (num > 0 ? 'text-up' : num < 0 ? 'text-down' : ''); } else { hr.textContent = '--'; hr.className = 'text-2xl font-bold text-light dark:text-gray-400'; }
+      document.getElementById('detailCompany').textContent = basic_info['运作公司'] || '--'; document.getElementById('detailBank').textContent = basic_info['托管银行'] || '--'; document.getElementById('detailRate').textContent = basic_info['基金评级'] || '--'; document.getElementById('detailScale').textContent = basic_info['最新规模'] || '--'; document.getElementById('detailValue').textContent = estimation_info['实时估算净值'] || '--'; document.getElementById('detailBias').textContent = estimation_info['估算偏差'] || '--'; document.getElementById('detailTip').textContent = estimation_info['提示'] || '--';
+      // 【修改】：增加 PRO 模式判断，只有开启且非游客模式才显示
+      const allocWrapper = document.getElementById('detailAllocationWrapper');
+      const allocContainer = document.getElementById('detailAllocation');
+      // 增加 !isGuestMode 和 isDetailedMode 的判断
+      if (!isGuestMode && isDetailedMode && basic_info.asset_allocation && basic_info.asset_allocation.length > 0) {
+          allocWrapper.classList.remove('hidden');
+          allocContainer.innerHTML = basic_info.asset_allocation.map(item => {
+              // 根据资产类型赋予不同的现代配色
+              let colorClass = 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600';
+              if (item.name.includes('股票')) colorClass = 'bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 border-red-200 dark:border-red-800/50';
+              else if (item.name.includes('债券')) colorClass = 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 border-blue-200 dark:border-blue-800/50';
+              else if (item.name.includes('现金')) colorClass = 'bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400 border-green-200 dark:border-green-800/50';
+              
+              return `<div class="px-3 py-1.5 rounded-lg border ${colorClass} flex items-center gap-2 text-sm font-medium shadow-sm transition-transform hover:scale-105">
+                          <span>${item.name}</span>
+                          <span class="font-bold font-mono">${item.value}%</span>
+                      </div>`;
+          }).join('');
+      } else {
+          allocWrapper.classList.add('hidden');
+          allocContainer.innerHTML = '';
+      }
+      // 【修改】：增加 !isGuestMode，确保处于本地模式时绝对不显示详细图表区块
+      if(!isGuestMode && isDetailedMode && detailed_info) {
+         document.getElementById('detailedMetricsSection').classList.remove('hidden');
+         document.getElementById('detailedChartSection').classList.remove('hidden');
+         const d5 = detailed_info.return_5d, d20 = detailed_info.return_20d, d60 = detailed_info.return_60d;
+         document.getElementById('detail5d').textContent = d5 + '%'; document.getElementById('detail5d').className = "font-bold text-xl " + (d5>0?"text-up":d5<0?"text-down":"");
+         document.getElementById('detail20d').textContent = d20 + '%'; document.getElementById('detail20d').className = "font-bold text-xl " + (d20>0?"text-up":d20<0?"text-down":"");
+         document.getElementById('detail60d').textContent = d60 + '%'; document.getElementById('detail60d').className = "font-bold text-xl " + (d60>0?"text-up":d60<0?"text-down":"");
+         
+         ['30d', '90d', '6mo'].forEach(t => {
+            const btn = document.getElementById('chartBtn'+t);
+            btn.onclick = () => {
+               ['30d', '90d', '6mo'].forEach(x => { document.getElementById('chartBtn'+x).className = "px-3 py-1 text-xs font-medium rounded text-light hover:text-neutral dark:hover:text-gray-200 transition-colors"; });
+               btn.className = "px-3 py-1 text-xs font-medium rounded shadow-sm bg-white dark:bg-gray-600 text-primary transition-colors";
+               renderFundChart(t, detailed_info);
+            };
+         });
+         document.getElementById('chartBtn30d').click();
+      } else {
+         document.getElementById('detailedMetricsSection').classList.add('hidden');
+         document.getElementById('detailedChartSection').classList.add('hidden');
+      }
+      
+      // 【新增】判断是否应该展示 PRO 相关数据列
+      const showProData = (!isGuestMode && isDetailedMode);
+      
+      // 【新增】动态控制表头的显示/隐藏
+      const thRate = document.getElementById('thRealtimeRate');
+      if (showProData) {
+          thRate.classList.remove('hidden');
+      } else {
+          thRate.classList.add('hidden');
+      }
+
+      const tb = document.getElementById('detailHoldingsBody');
+      if (holdings_data && holdings_data.length > 0) { 
+        tb.innerHTML = holdings_data.map((r, i) => {
+          // 根据类型生成对应的彩色标签
+          const typeLabel = r[4] === '股票' 
+            ? `<span class="px-2 py-0.5 rounded text-xs font-bold bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400">股票</span>` 
+            : (r[4] === '债券' 
+                ? `<span class="px-2 py-0.5 rounded text-xs font-bold bg-blue-100 text-primary dark:bg-blue-900/30 dark:text-blue-400">债券</span>` 
+                : `<span class="px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400">${r[4]||'--'}</span>`);
+          
+          // 【核心修改】动态生成数据格
+          let rateTdHtml = '';
+          if (showProData) {
+              let rateHtml = `<span class="text-light dark:text-gray-500">--</span>`;
+              if(r[5] !== undefined && r[5] !== "--") {
+                  const numVal = parseFloat(r[5]);
+                  const colorClass = numVal > 0 ? 'text-up' : (numVal < 0 ? 'text-down' : 'text-neutral dark:text-gray-300');
+                  rateHtml = `<div class="${colorClass} font-bold leading-tight">${numVal > 0 ? '+' : ''}${numVal.toFixed(2)}%</div>
+                              <div class="text-[10px] text-light dark:text-gray-500 mt-0.5 whitespace-nowrap">${r[6] || ''}</div>`;
+              }
+              rateTdHtml = `<td class="px-4 py-3 border-b border-gray-100 dark:border-gray-700">${rateHtml}</td>`;
+          }
+
+          return `<tr class="${i % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-800/50'} hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors">
+                    ${rateTdHtml}  <td class="px-4 py-3 border-b border-gray-100 dark:border-gray-700 text-neutral dark:text-gray-300 font-mono text-sm">${r[0]||'--'}</td>
+                    <td class="px-4 py-3 border-b border-gray-100 dark:border-gray-700 font-medium text-neutral dark:text-gray-200">${r[1]||'--'}</td>
+                    <td class="px-4 py-3 border-b border-gray-100 dark:border-gray-700 text-right text-neutral dark:text-gray-300">${r[2]?r[2]+'%':'--'}</td>
+                    <td class="px-4 py-3 border-b border-gray-100 dark:border-gray-700 text-right text-neutral dark:text-gray-300">${r[3]||'--'}</td>
+                    <td class="px-4 py-3 border-b border-gray-100 dark:border-gray-700 text-center">${typeLabel}</td>
+                  </tr>`;
+        }).join(''); 
+      } else { 
+        // 【核心修改】连同暂无数据的 colspan 也要动态修改 (开启时占6列，关闭时占5列)
+        tb.innerHTML = `<tr><td colspan="${showProData ? 6 : 5}" class="px-4 py-16 text-center text-light dark:text-gray-500">暂无数据</td></tr>`; 
+      }
+    }
+
+    document.getElementById('openAddModalBtn').onclick = () => { document.getElementById('modalFundInput').value = ''; document.getElementById('modalError').classList.add('hidden'); openModalWithBackdrop('addModal'); };
+    document.getElementById('closeModalBtn').onclick = () => closeModalWithBackdrop('addModal');
+    
+    document.getElementById('confirmAddBtn').onclick = async () => {
+      const code = document.getElementById('modalFundInput').value.trim(); const err = document.getElementById('modalError');
+      if (code.length !== 6) { err.querySelector('span').textContent = '请输入6位代码'; err.classList.remove('hidden'); return; }
+      if (fundPool.some(f => f.code === code)) { err.querySelector('span').textContent = '已在池中'; err.classList.remove('hidden'); return; }
+      
+      document.getElementById('confirmAddBtn').disabled = true; 
+      err.classList.add('hidden');
+      document.getElementById('modalBtnText').classList.add('hidden');
+      document.getElementById('modalSpinner').classList.remove('hidden');
+      
+      try {
+        const res = await fetch(`${API_BASE_URL}/query?code=${code}`); const result = await res.json();
+        if (result.success) { 
+          fundPool.unshift({ code: code, data: result.data, timestamp: Date.now() }); 
+          saveFundsToBackend(); renderPool(); closeModalWithBackdrop('addModal'); 
+        } else throw new Error(result.error);
+      } catch (e) { err.querySelector('span').textContent = '未找到基金'; err.classList.remove('hidden'); }
+      finally { 
+        document.getElementById('confirmAddBtn').disabled = false; 
+        document.getElementById('modalBtnText').classList.remove('hidden');
+        document.getElementById('modalSpinner').classList.add('hidden');
+      }
+    };
+    
+    // 【持久开关模式】：点击后一直绿、一直转、一直呼吸，直到再次点击关闭
+    document.getElementById('autoUpdateToggle').onclick = async () => {
+      const btn = document.getElementById('autoUpdateToggle');
+      
+      // 切换全局状态变量
+      isAutoUpdateEnabled = !isAutoUpdateEnabled;
+
+      if (isAutoUpdateEnabled) {
+          // ================= 开启自动更新 =================
+          // 视觉反馈：持续的绿色 + 呼吸脉冲 + 旋转
+          btn.classList.remove('bg-gray-200', 'dark:bg-gray-800', 'text-neutral', 'dark:text-gray-200');
+          btn.classList.add('bg-green-500', 'dark:bg-green-600', 'text-white', 'animate-pulse');
+          btn.innerHTML = '<iconify-icon icon="fa6-solid:rotate" class="animate-spin"></iconify-icon><span class="hidden sm:inline">监控中</span>'; // 换个词更体现持续性
+
+          // 逻辑处理：立刻拉取一次，并挂载定时器
+          await batchUpdateAllFundsFull();
+          updateCycleCount = 1; 
+          if (autoUpdateInterval) clearInterval(autoUpdateInterval);
+          autoUpdateInterval = setInterval(updateAllFunds, updateInterval);
+          
+      } else {
+          // ================= 关闭自动更新 =================
+          // 视觉反馈：恢复静止与灰色
+          btn.classList.remove('bg-green-500', 'dark:bg-green-600', 'text-white', 'animate-pulse');
+          btn.classList.add('bg-gray-200', 'dark:bg-gray-800', 'text-neutral', 'dark:text-gray-200');
+          btn.innerHTML = '<iconify-icon icon="fa6-solid:rotate"></iconify-icon><span class="hidden sm:inline">更新</span>';
+
+          // 逻辑处理：清理定时器，切断网络请求
+          if (autoUpdateInterval) clearInterval(autoUpdateInterval);
+      }
+    };
+
+    // 频率设置按钮修改：
+    const setInt = (s) => { 
+      selectedInterval = s; updateInterval = s * 1000; document.getElementById('currentIntervalDisplay').textContent = `${s}秒`; 
+      localStorage.setItem('updateInterval', selectedInterval); // 【新增】缓存到本地
+      if (isAutoUpdateEnabled) { clearInterval(autoUpdateInterval); autoUpdateInterval = setInterval(updateAllFunds, updateInterval); } 
+      document.getElementById('settingsBtn').click();
+      saveFundsToBackend(); // 【新增】一旦更改频率，立刻同步云端
+    };
+    document.getElementById('interval15s').onclick = () => setInt(15); document.getElementById('interval30s').onclick = () => setInt(30); document.getElementById('interval60s').onclick = () => setInt(60); document.getElementById('interval120s').onclick = () => setInt(120);
+
+    // 防复制
+    document.addEventListener('contextmenu', (e) => { if (e.target.tagName !== 'INPUT') e.preventDefault(); });
+    document.addEventListener('copy', (e) => { if (e.target.tagName !== 'INPUT') e.preventDefault(); });
+    document.addEventListener('selectstart', (e) => { if (e.target.tagName !== 'INPUT') e.preventDefault(); });
+
+    // 启动
+    checkAndInitSyncCode(); 
+  </script>
+</body>
+</html>
